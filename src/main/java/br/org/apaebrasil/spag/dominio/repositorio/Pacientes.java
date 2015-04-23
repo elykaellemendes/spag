@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.org.apaebrasil.spag.infraestrutura.repositorio;
+package br.org.apaebrasil.spag.dominio.repositorio;
 
 import br.org.apaebrasil.spag.dominio.Paciente;
-import br.org.apaebrasil.spag.dominio.repositorio.Pacientes;
 
 /**
  *
  * @author Pc
  */
-public class PacientesHibernate extends RepositorioHibernate<Paciente, Integer> implements Pacientes {
-  
+public interface Pacientes extends Repositorio<Paciente, Integer> {
+    
 }
