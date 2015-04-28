@@ -20,4 +20,14 @@ public class AgendamentosHibernate extends RepositorioHibernate<Agendamento, Int
     public List<Agendamento> porDataHora(Date dataHora) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Agendamento> porPaciente(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Agendamento> porEspecializacao(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

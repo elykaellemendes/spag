@@ -15,4 +15,6 @@ import java.util.List;
  */
 public interface Agendamentos extends Repositorio<Agendamento, Integer> {
     public List<Agendamento> porDataHora(Date dataHora);
+    public List<Agendamento> porPaciente(String nome);
+    public List<Agendamento> porEspecializacao(String nome);
 }
