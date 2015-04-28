@@ -8,6 +8,7 @@ package br.org.apaebrasil.spag.infraestrutura.repositorio;
 import java.util.List;
 import br.org.apaebrasil.spag.dominio.Consulta;
 import br.org.apaebrasil.spag.dominio.repositorio.Consultas;
+import java.util.Date;
 
 /**
  *
@@ -16,6 +17,11 @@ import br.org.apaebrasil.spag.dominio.repositorio.Consultas;
 public class ConsultasHibernate extends RepositorioHibernate<Consulta, Integer> implements Consultas {
     @Override
     public List<Consulta> porPaciente(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Consulta> porDataHora(Date dataHora) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
