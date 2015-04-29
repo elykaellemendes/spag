@@ -37,5 +37,6 @@ public class RepositorioHibernate<T, I> implements Repositorio<T, I> {
     @Override
     public List<T> recuperarTodos() {
         return DaoManagerHiber.recover("from Agendamento");
+//        Como fica o codigo acima, tanto de recuperar todos como de recuperar pelo codigo;
     }
 }
