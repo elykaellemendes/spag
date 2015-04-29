@@ -10,5 +10,6 @@ package br.org.apaebrasil.spag.dominio;
  * @author Pc
  */
 public enum Especializacao {
+
     FISIOTERAPEUTA, TERAPEUTA_OCUPACIONAL, PEDIATRA, NEUROLOGISTA, FONOAUDIOLOGO;
 }

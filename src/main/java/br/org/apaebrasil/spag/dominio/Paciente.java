@@ -7,8 +7,6 @@ package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -23,8 +21,6 @@ import javax.persistence.TemporalType;
  *
  * @author Pc
  */
-@ManagedBean
-@RequestScoped
 @Entity
 public class Paciente implements Serializable{
    
@@ -154,7 +150,4 @@ public class Paciente implements Serializable{
     public void setCartaoSus(String cartaoSus) {
         this.cartaoSus = cartaoSus;
     }
-
-    
-    
 }

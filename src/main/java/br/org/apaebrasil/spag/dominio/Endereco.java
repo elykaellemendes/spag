@@ -89,7 +89,4 @@ public class Endereco implements Serializable {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
-    
-
 }

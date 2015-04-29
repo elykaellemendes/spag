@@ -7,8 +7,6 @@ package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,20 +20,19 @@ import javax.persistence.TemporalType;
  *
  * @author Pc
  */
-@ManagedBean
-@RequestScoped
 @Entity
-public class Agendamento implements Serializable{
+public class Agendamento implements Serializable {
+
     @Id
     @GeneratedValue
     private int codigo;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataHora;
-    
+
     @OneToOne
     private Paciente paciente;
-    
+
     @Enumerated(EnumType.STRING)
     private Especializacao especializacao;
 

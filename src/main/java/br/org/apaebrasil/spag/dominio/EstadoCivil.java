@@ -10,6 +10,6 @@ package br.org.apaebrasil.spag.dominio;
  * @author Pc
  */
 public enum EstadoCivil {
-    SOLTEIRO, CASADO, DIVORCIADO, VIUVO;
     
+    SOLTEIRO, CASADO, DIVORCIADO, VIUVO;
 }

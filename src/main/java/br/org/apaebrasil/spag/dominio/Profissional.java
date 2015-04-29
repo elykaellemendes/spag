@@ -6,8 +6,6 @@
 package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,29 +17,28 @@ import javax.persistence.Id;
  *
  * @author Pc
  */
-@ManagedBean
-@RequestScoped
 @Entity
 public class Profissional implements Serializable {
+
     @Id
     @GeneratedValue
     private int codigo;
-    
+
     @Column
     private String nome;
-    
+
     @Column
     private String cpf;
-    
+
     @Column
     private String registroMedico;
-    
+
     @Column
     private String login;
-    
+
     @Column
     private String senha;
-    
+
     @Enumerated(EnumType.STRING)
     private Especializacao especializacao;
 
@@ -113,6 +110,4 @@ public class Profissional implements Serializable {
     public void setEspecializacao(Especializacao especializacao) {
         this.especializacao = especializacao;
     }
-    
-    
 }

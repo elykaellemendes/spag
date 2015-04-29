@@ -7,8 +7,6 @@ package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,28 +19,27 @@ import javax.persistence.TemporalType;
  *
  * @author Pc
  */
-@ManagedBean
-@RequestScoped
 @Entity
 public class Consulta implements Serializable {
+
     @Id
     @GeneratedValue
     private int codigo;
     @Column
     private String registro;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataHora;
-    
+
     @Column
     private String unidade;
-    
+
     @OneToOne
     private Paciente paciente;
-    
+
     @OneToOne
     private Profissional profissional;
-    
+
     @Column
     private String descricao;
 
@@ -114,7 +111,4 @@ public class Consulta implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
-    
-
 }

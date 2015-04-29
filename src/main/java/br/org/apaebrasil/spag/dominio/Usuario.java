@@ -6,8 +6,6 @@
 package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,10 +15,9 @@ import javax.persistence.Id;
  *
  * @author Pc
  */
-@ManagedBean
-@RequestScoped
 @Entity
 public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue
     private int codigo;
@@ -34,7 +31,6 @@ public class Usuario implements Serializable {
     private String login;
     @Column
     private String senha;
-
 
     public Usuario() {
     }
@@ -95,5 +91,4 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
 }

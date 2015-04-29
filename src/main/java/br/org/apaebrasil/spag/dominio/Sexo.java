@@ -10,6 +10,6 @@ package br.org.apaebrasil.spag.dominio;
  * @author Pc
  */
 public enum Sexo {
+
     MASCULINO, FEMININO;
-    
 }
