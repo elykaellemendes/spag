@@ -1,0 +1,74 @@
+﻿Adicione esta linha para associar o editor padrão do git ao notepad++
+#####################################################################
+
+$ git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
+
+Guia de Comandos do Git
+#######################
+
+0. Listar todas as modificações (status atual)
+
+$ git status
+
+
+1. Adicionar um arquivo modificado ou novo na staged area
+
+$ git add <caminho/do/arquivo>
+
+
+2. Adicionar todos os arquivos modificados ou novos na staged area
+
+$ git add .
+
+
+3. Realizar um commit (salvar as modificações da staged area)
+
+$ git commit -m "mensagem"
+
+
+4. Realizar um commit editando a mensagem no notepad++
+
+$ git commit
+
+
+5. Realizar um pull (pegar as modificações do GitHub)
+
+$ git pull
+
+
+6. Realizar um push (jogar as modificações no GitHub)
+
+$ git push
+
+
+7. Criar um novo branch (ramificação com novo código)
+
+$ git branch <nome-do-branch>
+
+
+8. Mudar de branch (ramificação com novo código)
+
+$ git checkout <nome-do-branch>
+
+
+9. Fazer um merge (juntar) entre os branches
+
+$ git checkout <nome-do-branch-que-vai-ter-todo-o-codigo>
+$ git merge <nome-do-branch-que-voce-quer-juntar>
+
+
+10. Apagar um branch quando não se precisa mais dele
+
+$ git branch -D <nome-do-branch>
+
+
+11. Fazer um push (jogar as modificações no GitHub) de um branch
+
+$ git push origin <nome-do-branch>
+
+
+12. Jogar fora todas as modificações
+
+$ git checkout -- .
+$ git clean -df
