@@ -12,7 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
@@ -21,7 +20,6 @@ import javax.persistence.Table;
 @ManagedBean
 @RequestScoped
 @Entity
-@Table
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue
@@ -31,7 +29,7 @@ public class Usuario implements Serializable {
     @Column
     private String cpf;
     @Column
-    private String cordenacao;
+    private String coordenacao;
     @Column
     private String login;
     @Column
@@ -45,7 +43,7 @@ public class Usuario implements Serializable {
         this.codigo = codigo;
         this.nome = nome;
         this.cpf = cpf;
-        this.cordenacao = cordenacao;
+        this.coordenacao = cordenacao;
         this.login = login;
         this.senha = senha;
     }
@@ -74,12 +72,12 @@ public class Usuario implements Serializable {
         this.cpf = cpf;
     }
 
-    public String getCordenacao() {
-        return cordenacao;
+    public String getCoordenacao() {
+        return coordenacao;
     }
 
-    public void setCordenacao(String cordenacao) {
-        this.cordenacao = cordenacao;
+    public void setCoordenacao(String coordenacao) {
+        this.coordenacao = coordenacao;
     }
 
     public String getLogin() {

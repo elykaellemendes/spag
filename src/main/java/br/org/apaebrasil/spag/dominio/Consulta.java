@@ -14,7 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,19 +24,15 @@ import javax.persistence.TemporalType;
 @ManagedBean
 @RequestScoped
 @Entity
-@Table
 public class Consulta implements Serializable {
     @Id
     @GeneratedValue
     private int codigo;
     @Column
-    private String numeroRegistro;
+    private String registro;
     
     @Temporal(TemporalType.TIMESTAMP)
-    private Date data;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date horario;
+    private Date dataHora;
     
     @Column
     private String unidade;
@@ -54,11 +49,10 @@ public class Consulta implements Serializable {
     public Consulta() {
     }
 
-    public Consulta(int codigo, String numeroRegistro, Date data, Date horario, String unidade, Paciente paciente, Profissional profissional, String descricao) {
+    public Consulta(int codigo, String registro, Date dataHora, String unidade, Paciente paciente, Profissional profissional, String descricao) {
         this.codigo = codigo;
-        this.numeroRegistro = numeroRegistro;
-        this.data = data;
-        this.horario = horario;
+        this.registro = registro;
+        this.dataHora = dataHora;
         this.unidade = unidade;
         this.paciente = paciente;
         this.profissional = profissional;
@@ -73,28 +67,20 @@ public class Consulta implements Serializable {
         this.codigo = codigo;
     }
 
-    public String getNumeroRegistro() {
-        return numeroRegistro;
+    public String getRegistro() {
+        return registro;
     }
 
-    public void setNumeroRegistro(String numeroRegistro) {
-        this.numeroRegistro = numeroRegistro;
+    public void setRegistro(String registro) {
+        this.registro = registro;
     }
 
-    public Date getData() {
-        return data;
+    public Date getDataHora() {
+        return dataHora;
     }
 
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public Date getHorario() {
-        return horario;
-    }
-
-    public void setHorario(Date horario) {
-        this.horario = horario;
+    public void setDataHora(Date dataHora) {
+        this.dataHora = dataHora;
     }
 
     public String getUnidade() {

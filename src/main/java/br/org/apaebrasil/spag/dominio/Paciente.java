@@ -10,10 +10,12 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,7 +26,6 @@ import javax.persistence.TemporalType;
 @ManagedBean
 @RequestScoped
 @Entity
-@Table
 public class Paciente implements Serializable{
    
     @Id
@@ -34,8 +35,8 @@ public class Paciente implements Serializable{
     @Column
     private String nome;
     
-    @Column
-    private String sexo;
+    @Enumerated(EnumType.STRING)
+    private Sexo sexo;
     
     @Temporal(TemporalType.DATE)
     private Date dataNasciemnto;
@@ -43,11 +44,11 @@ public class Paciente implements Serializable{
     @Column
     private String filiacao;
     
-    @Column
-    private String endereco;
+    @Embedded
+    private Endereco endereco;
     
-    @Column
-    private String estadoCivil;
+    @Enumerated(EnumType.STRING)
+    private EstadoCivil estadoCivil;
     
     @Column
     private String naturalidade;
@@ -61,7 +62,7 @@ public class Paciente implements Serializable{
     public Paciente() {
     }
 
-    public Paciente(int codigo, String nome, String sexo, Date dataNasciemnto, String filiacao, String endereco, String estadoCivil, String naturalidade, String procedencia, String cartaoSus) {
+    public Paciente(int codigo, String nome, Sexo sexo, Date dataNasciemnto, String filiacao, Endereco endereco, EstadoCivil estadoCivil, String naturalidade, String procedencia, String cartaoSus) {
         this.codigo = codigo;
         this.nome = nome;
         this.sexo = sexo;
@@ -90,11 +91,11 @@ public class Paciente implements Serializable{
         this.nome = nome;
     }
 
-    public String getSexo() {
+    public Sexo getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
 
@@ -114,19 +115,19 @@ public class Paciente implements Serializable{
         this.filiacao = filiacao;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
-    public String getEstadoCivil() {
+    public EstadoCivil getEstadoCivil() {
         return estadoCivil;
     }
 
-    public void setEstadoCivil(String estadoCivil) {
+    public void setEstadoCivil(EstadoCivil estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
 

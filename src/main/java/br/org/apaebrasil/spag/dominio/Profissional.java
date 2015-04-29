@@ -14,7 +14,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
@@ -23,7 +22,6 @@ import javax.persistence.Table;
 @ManagedBean
 @RequestScoped
 @Entity
-@Table
 public class Profissional implements Serializable {
     @Id
     @GeneratedValue
