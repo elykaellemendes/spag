@@ -5,37 +5,28 @@
  */
 package br.org.apaebrasil.spag.infraestrutura.repositorio;
 
-import java.util.List;
 import br.org.apaebrasil.spag.dominio.Profissional;
+import br.org.apaebrasil.spag.dominio.repositorio.Profissionais;
+import java.util.List;
 
 /**
  *
  * @author Pc
  */
-public class ProfissionaisHibernate implements br.org.apaebrasil.spag.dominio.repositorio.Repositorio<Profissional, Integer>{
+public class ProfissionaisHibernate extends RepositorioHibernate<Profissional, Integer> implements Profissionais{
 
     @Override
-    public void inserir(Profissional t) {
-        br.org.apaebrasil.spag.infraestrutura.repositorio.util.DaoManagerHiber.persist(t);
+    public List<Profissional> porProfissional(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void alterar(Profissional t) {
-        br.org.apaebrasil.spag.infraestrutura.repositorio.util.DaoManagerHiber.update(t);
+    public List<Profissional> porCpf(String cpf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Profissional recuperar(Integer g) {
-        try {
-            return (Profissional) br.org.apaebrasil.spag.infraestrutura.repositorio.util.DaoManagerHiber.recover("from Profissional where codigo='"+g+"'").get(0);
-        }catch(IndexOutOfBoundsException i){
-            return null;
-        }
+    public List<Profissional> porEspecializacao(String especializacao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public List<Profissional> recuperarTodos() {
-        return br.org.apaebrasil.spag.infraestrutura.repositorio.util.DaoManagerHiber.recover("from Profissional");
-    }
-    
 }
