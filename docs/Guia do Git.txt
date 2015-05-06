@@ -72,3 +72,8 @@ $ git push origin <nome-do-branch>
 
 $ git checkout -- .
 $ git clean -df
+
+
+13. Para remover um branch remoto
+
+$ git push origin --delete <nome-do-branch>
