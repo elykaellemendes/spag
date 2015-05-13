@@ -57,6 +57,7 @@ public class Paciente implements Serializable {
     private String cartaoSus;
 
     public Paciente() {
+        this.endereco = new Endereco();
     }
 
     public Paciente(String nome, Sexo sexo, Date dataNascimento, String filiacao, Endereco endereco, EstadoCivil estadoCivil, String naturalidade, String procedencia, String cartaoSus) {

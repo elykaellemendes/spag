@@ -27,8 +27,6 @@ public class ControladorPacientes implements Serializable {
 
     private static final long serialVersionUID = 1;
 
-    private static boolean populando = false;
-
     @Inject
     private Pacientes pacientes;
 
@@ -37,13 +35,6 @@ public class ControladorPacientes implements Serializable {
     private List<Paciente> todosPacientes;
 
     public void consultar() {
-        if (populando == false) {
-            Paciente p = new Paciente("fabricio", Sexo.MASCULINO, new Date(),
-                    "lourival", new Endereco(), EstadoCivil.SOLTEIRO, "brasileiro", "sei lá", "9338238929");
-            pacientes.inserir(p);
-            populando = true;
-        }
-
         System.out.println("Consultando...");
         todosPacientes = pacientes.recuperarTodos();
 

@@ -14,6 +14,51 @@
             <f:viewAction action="#{controladorPacientes.consultar}" />
         </f:metadata>
 
+        <h:form>
+            <h:panelGrid columns="2">
+                Nome:
+                <h:inputText value="#{controladorPacientes.paciente.nome}"/>
+                Sexo:
+                <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.sexo}"
+                                 required="true">
+                    <f:selectItems value="#{controladorPacientes.sexos}" />
+                </h:selectOneMenu>
+                Data de Nascimento:
+                <h:inputText value="#{controladorPacientes.paciente.dataNascimento}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:inputText>
+                Filiação:
+                <h:inputText value="#{controladorPacientes.paciente.filiacao}"/>
+                Logradouro:
+                <h:inputText value="#{controladorPacientes.paciente.endereco.logradouro}"/>
+                Número:
+                <h:inputText value="#{controladorPacientes.paciente.endereco.numero}"/>
+                Complemento:
+                <h:inputText value="#{controladorPacientes.paciente.endereco.complemento}"/>
+                Bairro:
+                <h:inputText value="#{controladorPacientes.paciente.endereco.bairro}"/>
+                Cidade:
+                <h:inputText value="#{controladorPacientes.paciente.endereco.cidade}"/>
+                UF:
+                <h:inputText value="#{controladorPacientes.paciente.endereco.uf}"/>
+                CEP:
+                <h:inputText value="#{controladorPacientes.paciente.endereco.cep}"/>
+                Estado Civil:
+                <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.estadoCivil}"
+                                 required="true">
+                    <f:selectItems value="#{controladorPacientes.estadosCivil}" />
+                </h:selectOneMenu>
+                Naturalidade:
+                <h:inputText value="#{controladorPacientes.paciente.naturalidade}"/>
+                Procedência:
+                <h:inputText value="#{controladorPacientes.paciente.procedencia}"/>
+                Cartão SUS:
+                <h:inputText value="#{controladorPacientes.paciente.cartaoSus}"/>
+
+                <h:commandButton value="Salvar" action="#{controladorPacientes.adicionar()}"/>
+            </h:panelGrid>
+        </h:form>
+
         <h:dataTable value="#{controladorPacientes.todosPacientes}" var="paciente" border="1">
             <h:column>
                 <f:facet name="header">Código</f:facet>
@@ -36,9 +81,33 @@
                     #{paciente.filiacao}
             </h:column>
             <h:column>
-                <f:facet name="header">Endereço</f:facet>
-                    #{paciente.endereco}
+                <f:facet name="header">Logradouro</f:facet>
+                    #{paciente.endereco.logradouro}
             </h:column>
+            <h:column>
+                <f:facet name="header">Número</f:facet>
+                    #{paciente.endereco.numero}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Complemento</f:facet>
+                    #{paciente.endereco.complemento}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Bairro</f:facet>
+                    #{paciente.endereco.bairro}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Cidade</f:facet>
+                    #{paciente.endereco.cidade}
+            </h:column>
+            <h:column>
+                <f:facet name="header">UF</f:facet>
+                    #{paciente.endereco.uf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">CEP</f:facet>
+                    #{paciente.endereco.cep}
+            </h:column>            
             <h:column>
                 <f:facet name="header">Estado Civil</f:facet>
                 #{paciente.estadoCivil}</h:column>

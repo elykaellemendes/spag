@@ -6,39 +6,29 @@
 package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Endereco implements Serializable {
 
-    @Column
     private String logradouro;
-
-    @Column
+    private String numero;
+    private String complemento;
     private String bairro;
-
-    @Column
     private String cidade;
-
-    @Column
-    private int numero;
-
-    @Column
-    private String Uf;
-
-    @Column
+    private String uf;
     private String cep;
 
     public Endereco() {
     }
 
-    public Endereco(String logradouro, String bairro, String cidade, int numero, String uf, String cep) {
+    public Endereco(String logradouro, String numero, String complemnto, String bairro, String cidade, String uf, String cep) {
         this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
         this.bairro = bairro;
         this.cidade = cidade;
-        this.numero = numero;
-        this.Uf = uf;
+        this.uf = uf;
         this.cep = cep;
     }
 
@@ -48,6 +38,22 @@ public class Endereco implements Serializable {
 
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
     public String getBairro() {
@@ -66,20 +72,12 @@ public class Endereco implements Serializable {
         this.cidade = cidade;
     }
 
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
     public String getUf() {
-        return Uf;
+        return uf;
     }
 
     public void setUf(String uf) {
-        this.Uf = uf;
+        this.uf = uf;
     }
 
     public String getCep() {
