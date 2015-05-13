@@ -22,47 +22,47 @@ import javax.persistence.TemporalType;
  * @author Pc
  */
 @Entity
-public class Paciente implements Serializable{
-   
+public class Paciente implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue
     private int codigo;
-    
+
     @Column
     private String nome;
-    
+
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
-    
+
     @Temporal(TemporalType.DATE)
-    private Date dataNasciemnto;
-    
+    private Date dataNascimento;
+
     @Column
     private String filiacao;
-    
+
     @Embedded
     private Endereco endereco;
-    
+
     @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
-    
+
     @Column
     private String naturalidade;
-    
+
     @Column
     private String procedencia;
-    
+
     @Column
     private String cartaoSus;
 
     public Paciente() {
     }
 
-    public Paciente(int codigo, String nome, Sexo sexo, Date dataNasciemnto, String filiacao, Endereco endereco, EstadoCivil estadoCivil, String naturalidade, String procedencia, String cartaoSus) {
-        this.codigo = codigo;
+    public Paciente(String nome, Sexo sexo, Date dataNascimento, String filiacao, Endereco endereco, EstadoCivil estadoCivil, String naturalidade, String procedencia, String cartaoSus) {
         this.nome = nome;
         this.sexo = sexo;
-        this.dataNasciemnto = dataNasciemnto;
+        this.dataNascimento = dataNascimento;
         this.filiacao = filiacao;
         this.endereco = endereco;
         this.estadoCivil = estadoCivil;
@@ -95,12 +95,12 @@ public class Paciente implements Serializable{
         this.sexo = sexo;
     }
 
-    public Date getDataNasciemnto() {
-        return dataNasciemnto;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDataNasciemnto(Date dataNasciemnto) {
-        this.dataNasciemnto = dataNasciemnto;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getFiliacao() {
@@ -149,5 +149,10 @@ public class Paciente implements Serializable{
 
     public void setCartaoSus(String cartaoSus) {
         this.cartaoSus = cartaoSus;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" + "codigo=" + codigo + ", nome=" + nome + ", sexo=" + sexo + ", dataNascimento=" + dataNascimento + ", filiacao=" + filiacao + ", endereco=" + endereco + ", estadoCivil=" + estadoCivil + ", naturalidade=" + naturalidade + ", procedencia=" + procedencia + ", cartaoSus=" + cartaoSus + '}';
     }
 }

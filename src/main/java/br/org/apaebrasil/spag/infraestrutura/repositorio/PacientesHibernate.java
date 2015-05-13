@@ -17,17 +17,17 @@ public class PacientesHibernate extends RepositorioHibernate<Paciente, Integer> 
 
     @Override
     public List<Paciente> porPaciente(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Paciente p where p.nome = :nome").getResultList();
     }
 
     @Override
-    public List<Paciente> porCidade(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Paciente> porCidade(String cidade) {
+        return manager.createQuery("from Paciente p where p.cidade = :cidade").getResultList();
     }
 
     @Override
     public List<Paciente> porCartaoSus(String cartaoSus) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Paciente p where p.cartaosus = :cartaosus").getResultList();
     }
-  
+
 }
