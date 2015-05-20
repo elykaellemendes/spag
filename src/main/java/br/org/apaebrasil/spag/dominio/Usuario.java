@@ -6,10 +6,7 @@
 package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 /**
  *
@@ -18,38 +15,15 @@ import javax.persistence.Id;
 @Entity
 public class Usuario implements Serializable {
 
-    @Id
-    @GeneratedValue
-    private int codigo;
-    @Column
     private String nome;
-    @Column
-    private String cpf;
-    @Column
-    private String coordenacao;
-    @Column
-    private String login;
-    @Column
     private String senha;
 
     public Usuario() {
     }
 
-    public Usuario(int codigo, String nome, String cpf, String cordenacao, String login, String senha) {
-        this.codigo = codigo;
+    public Usuario(String nome,String senha) {
         this.nome = nome;
-        this.cpf = cpf;
-        this.coordenacao = cordenacao;
-        this.login = login;
         this.senha = senha;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     public String getNome() {
@@ -58,30 +32,6 @@ public class Usuario implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getCoordenacao() {
-        return coordenacao;
-    }
-
-    public void setCoordenacao(String coordenacao) {
-        this.coordenacao = coordenacao;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getSenha() {
