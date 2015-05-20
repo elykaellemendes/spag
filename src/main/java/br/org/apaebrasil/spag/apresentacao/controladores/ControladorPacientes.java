@@ -5,13 +5,11 @@
  */
 package br.org.apaebrasil.spag.apresentacao.controladores;
 
-import br.org.apaebrasil.spag.dominio.Endereco;
 import br.org.apaebrasil.spag.dominio.EstadoCivil;
 import br.org.apaebrasil.spag.dominio.Paciente;
 import br.org.apaebrasil.spag.dominio.Sexo;
 import br.org.apaebrasil.spag.dominio.repositorio.Pacientes;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
