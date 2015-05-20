@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>SPAG::Cadastro de Funcionários</title>
+    </h:head>
+
+    <h:body>
+        <f:metadata>
+            <f:viewAction action="#{controladorFuncionarios.consultar}" />
+        </f:metadata>
+
+        <h:form>
+            <h:panelGrid columns="2">
+                Nome:
+                <h:inputText value="#{controladorFuncionarios.funcionario.nome}"/>
+                Cpf:
+                <h:inputText value="#{controladorFuncionarios.funcionario.cpf}"/>
+
+                <h:commandButton value="Salvar" action="#{controladorFuncionarios.adicionar()}"/>
+            </h:panelGrid>
+        </h:form>
+
+        <h:dataTable value="#{controladorFuncionarios.todosFuncionarios}" var="funcionario" border="1">
+            <h:column>
+                <f:facet name="header">Código</f:facet>
+                    #{funcionario.codigo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                    #{funcionario.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">cpf</f:facet>
+                    #{funcionario.cpf}
+            </h:column>              
+        </h:dataTable>
+    </h:body>
+</html>
+
