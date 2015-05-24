@@ -17,16 +17,16 @@ public class ProfissionaisHibernate extends RepositorioHibernate<Profissional, I
 
     @Override
     public List<Profissional> porProfissional(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Profissional p where p.nome = :nome").getResultList();
     }
 
     @Override
     public List<Profissional> porCpf(String cpf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Profissional p where p.cpf = :cpf").getResultList();
     }
 
     @Override
     public List<Profissional> porEspecializacao(String especializacao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Profissional p where p.especializacao = :especializacao").getResultList();
     }
 }
