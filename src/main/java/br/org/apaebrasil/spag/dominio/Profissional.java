@@ -7,6 +7,7 @@ package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -24,20 +25,14 @@ public class Profissional implements Serializable {
     @GeneratedValue
     private int codigo;
 
-    @Column
     private String nome;
 
-    @Column
     private String cpf;
 
-    @Column
     private String registroMedico;
 
-    @Column
-    private String login;
-
-    @Column
-    private String senha;
+    @Embedded
+    private Usuario usuario;
 
     @Enumerated(EnumType.STRING)
     private Especializacao especializacao;
@@ -45,13 +40,12 @@ public class Profissional implements Serializable {
     public Profissional() {
     }
 
-    public Profissional(int codigo, String nome, String cpf, String registroMedico, String login, String senha, Especializacao especializacao) {
+    public Profissional(int codigo, String nome, String cpf, String registroMedico, Usuario usuario,Especializacao especializacao) {
         this.codigo = codigo;
         this.nome = nome;
         this.cpf = cpf;
         this.registroMedico = registroMedico;
-        this.login = login;
-        this.senha = senha;
+        this.usuario = usuario;
         this.especializacao = especializacao;
     }
 
@@ -87,20 +81,12 @@ public class Profissional implements Serializable {
         this.registroMedico = registroMedico;
     }
 
-    public String getLogin() {
-        return login;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Especializacao getEspecializacao() {
