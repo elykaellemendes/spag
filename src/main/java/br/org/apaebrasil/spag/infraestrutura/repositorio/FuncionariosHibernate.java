@@ -17,12 +17,12 @@ public class FuncionariosHibernate extends RepositorioHibernate<Funcionario, Int
 
     @Override
     public List<Funcionario> porProfissional(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Funcionario f where f.nome = :nome").getResultList();
     }
 
     @Override
     public List<Funcionario> porCpf(String cpf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Funcionario f where f.nome = :nome").getResultList();
     }
     
     
