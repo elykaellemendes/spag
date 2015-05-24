@@ -22,7 +22,7 @@ public class Endereco implements Serializable {
     public Endereco() {
     }
 
-    public Endereco(String logradouro, String numero, String complemnto, String bairro, String cidade, String uf, String cep) {
+    public Endereco(String logradouro, String numero, String complemento, String bairro, String cidade, String uf, String cep) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
