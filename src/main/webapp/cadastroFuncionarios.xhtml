@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta charset="UTF-8"/>
-        <title>SPAG::Cadastro de Funcionários</title>
+        <title>SPAG:Cadastro de Funcionários</title>
     </h:head>
 
     <h:body>
@@ -24,20 +24,7 @@
             </h:panelGrid>
         </h:form>
 
-        <h:dataTable value="#{controladorFuncionarios.todosFuncionarios}" var="funcionario" border="1">
-            <h:column>
-                <f:facet name="header">Código</f:facet>
-                    #{funcionario.codigo}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Nome</f:facet>
-                    #{funcionario.nome}
-            </h:column>
-            <h:column>
-                <f:facet name="header">cpf</f:facet>
-                    #{funcionario.cpf}
-            </h:column>              
-        </h:dataTable>
+        
     </h:body>
 </html>
 
