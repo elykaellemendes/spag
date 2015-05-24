@@ -25,13 +25,12 @@ public class Consulta implements Serializable {
     @Id
     @GeneratedValue
     private int codigo;
-    @Column
+
     private String registro;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataHora;
 
-    @Column
     private String unidade;
 
     @OneToOne
@@ -40,7 +39,6 @@ public class Consulta implements Serializable {
     @OneToOne
     private Profissional profissional;
 
-    @Column
     private String descricao;
 
     public Consulta() {
