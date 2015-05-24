@@ -6,7 +6,6 @@
 package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
