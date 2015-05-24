@@ -7,6 +7,8 @@ package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
@@ -15,6 +17,9 @@ import javax.persistence.Entity;
 @Entity
 public class Usuario implements Serializable {
 
+    @Id
+    @GeneratedValue
+    private int codigo;
     private String nome;
     private String senha;
 
@@ -40,5 +45,13 @@ public class Usuario implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 }
