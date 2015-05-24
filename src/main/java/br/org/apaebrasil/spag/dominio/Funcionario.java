@@ -25,10 +25,8 @@ public class Funcionario implements Serializable{
     @GeneratedValue
     private int codigo;
 
-    @Column
     private String nome;
 
-    @Column
     private String cpf;
     
     @Embedded
