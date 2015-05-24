@@ -7,7 +7,6 @@ package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -29,7 +28,6 @@ public class Paciente implements Serializable {
     @GeneratedValue
     private int codigo;
 
-    @Column
     private String nome;
 
     @Enumerated(EnumType.STRING)
@@ -38,7 +36,6 @@ public class Paciente implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 
-    @Column
     private String filiacao;
 
     @Embedded
@@ -47,13 +44,10 @@ public class Paciente implements Serializable {
     @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
 
-    @Column
     private String naturalidade;
 
-    @Column
     private String procedencia;
 
-    @Column
     private String cartaoSus;
 
     public Paciente() {
