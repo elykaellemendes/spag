@@ -17,11 +17,11 @@ import java.util.Date;
 public class ConsultasHibernate extends RepositorioHibernate<Consulta, Integer> implements Consultas {
     @Override
     public List<Consulta> porPaciente(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Consulta c where c.nome = :nome").getResultList();
     }
 
     @Override
     public List<Consulta> porDataHora(Date dataHora) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Consulta c where c.dataHora = :dataHora").getResultList();
     }
 }
