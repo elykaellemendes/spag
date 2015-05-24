@@ -18,16 +18,16 @@ public class AgendamentosHibernate extends RepositorioHibernate<Agendamento, Int
 
     @Override
     public List<Agendamento> porDataHora(Date dataHora) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Agendamento a where a.dataHora = :dataHora").getResultList();
     }
 
     @Override
     public List<Agendamento> porPaciente(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return manager.createQuery("from Agendamento a where a.nome = :nome").getResultList();
     }
 
     @Override
-    public List<Agendamento> porEspecializacao(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Agendamento> porEspecializacao(String especializacao) {
+        return manager.createQuery("from Agendamento a where a.especializacao = :especializacao").getResultList();
     }
 }
