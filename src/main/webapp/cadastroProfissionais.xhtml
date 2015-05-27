@@ -10,6 +10,36 @@
     </h:head>
 
     <h:body>
+        <h:form id="paginaInicial">
+            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
+             <p:growl id="menu"/> 
+            
+            <p:menubar>
+             <p:menuitem value="Início" icon="ui-icon-home" url="paginaInicial.xhtml"/>
+
+                <p:submenu label="Pacientes">
+                      <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="cadastroPacientes.xhtml"/>
+                        <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="visualizaPacientes.xhtml"/>
+                       
+                        <p:separator /> 
+                    </p:submenu>
+
+               
+
+                <p:submenu label="Profissionais">
+                    <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="cadastroProfissionais.xhtml"/>
+                    <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="visualizaProfissionais.xhtml"/>
+                    
+
+                    <p:separator /> 
+                </p:submenu>
+
+                <p:submenu label="Ajuda" >
+                    <p:menuitem value="Sobre" icon="" update="menu" url=""/>
+                    <p:separator/>                             
+                </p:submenu>
+                <p:menuitem icon="ui-icon-power" value="Sair" action="#{controleLogin.sair()}" oncomplete="location.href='Login.xhtml'"/>
+            </p:menubar>
         <f:metadata>
             <f:viewAction action="#{controladorProfissionais.consultar}" />
         </f:metadata>
