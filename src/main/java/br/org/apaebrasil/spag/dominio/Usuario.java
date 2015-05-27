@@ -6,37 +6,31 @@
 package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
 
 /**
  *
  * @author Pc
  */
-@Entity
+@Embeddable
 public class Usuario implements Serializable {
-
-    @Id
-    @GeneratedValue
-    private int codigo;
-    private String nome;
+    private String login;
     private String senha;
 
     public Usuario() {
     }
 
-    public Usuario(String nome,String senha) {
-        this.nome = nome;
+    public Usuario(String login,String senha) {
+        this.login = login;
         this.senha = senha;
     }
 
-    public String getNome() {
-        return nome;
+    public String getLogin() {
+        return login;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getSenha() {
@@ -45,13 +39,5 @@ public class Usuario implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 }
