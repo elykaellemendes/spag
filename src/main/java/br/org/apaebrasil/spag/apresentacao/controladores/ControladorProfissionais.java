@@ -22,6 +22,8 @@ import javax.inject.Named;
 @ViewScoped
 public class ControladorProfissionais implements Serializable{
     
+    private static final long serialVersionUID = 1;
+    
     @Inject
     private Profissionais profissionais;
     
@@ -33,8 +35,8 @@ public class ControladorProfissionais implements Serializable{
         System.out.println("Consultando...");
         todosProfissionais = profissionais.recuperarTodos();
 
-        for (Profissional p : todosProfissionais) {
-            System.out.println(p);
+        for (Profissional pf : todosProfissionais) {
+            System.out.println(pf);
         }
     }
 

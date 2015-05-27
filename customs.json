@@ -1,0 +1,19 @@
+{
+    "elements": {
+        "p:growl": {
+            "attributes": {
+                "showSummary": {},
+                "life": {},
+                "showDetail": {}
+            }
+        },
+        "h:form": {
+            "attributes": {
+                "id": {}
+            }
+        }
+    },
+    "attributes": {
+        "id": {}
+    }
+}

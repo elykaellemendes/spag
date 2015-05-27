@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <p:growl id="gro" life="4000" />
+        <h:form id="login" >
+            <p:layout>
+                <p:layoutUnit position="center">
+                    <h:panelGrid columns="2" cellpadding="50" cellspacing="60">
+                        Bem-vindos!
+
+                        <p:panel header="Login">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputLabel for="usuario" value="Usuário:"/>
+                                <p:inputText  id="login" value="#{Usuario.login}" maxlength="7" required="true"/>
+                                <h:outputLabel for="senha" value="Senha:"/>
+                                <p:password id="senha" value="#{Usuario.senha}" required="true"/>
+                            </h:panelGrid>
+
+                            <div style="width: 100%; text-align:right; margin-top:10%;">
+                                <p:commandButton value="Ok" action="#{controladorUsuario.realizaLogin(Usuario.login, Usuario.senha)}" update=":gro"/>
+                            </div>
+                        </p:panel>
+
+                    </h:panelGrid>
+                </p:layoutUnit>
+            </p:layout>
+        </h:form>
+
+    </h:body>
+</html>

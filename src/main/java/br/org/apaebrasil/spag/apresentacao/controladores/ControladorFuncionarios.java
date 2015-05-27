@@ -21,6 +21,8 @@ import javax.inject.Named;
 @ViewScoped
 public class ControladorFuncionarios implements Serializable{
     
+    private static final long serialVersionUID = 1;
+    
    @Inject
     private Funcionarios funcionarios;
     
@@ -32,8 +34,8 @@ public class ControladorFuncionarios implements Serializable{
         System.out.println("Consultando...");
         todosFuncionarios = funcionarios.recuperarTodos();
 
-        for (Funcionario p : todosFuncionarios) {
-            System.out.println(p);
+        for (Funcionario f : todosFuncionarios) {
+            System.out.println(f);
         }
     }
 
