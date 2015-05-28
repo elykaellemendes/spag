@@ -33,27 +33,16 @@ public class ControladorPacientes implements Serializable {
     private List<Paciente> todosPacientes;
 
     public void consultar() {
-        System.out.println("Consultando...");
         todosPacientes = pacientes.recuperarTodos();
-
-        for (Paciente p : todosPacientes) {
-            System.out.println(p);
-        }
     }
 
     public void novo() {
-        System.out.println("Novo...");
         paciente = new Paciente();
     }
 
     public void adicionar() {
-        System.out.println("Adicionando...");
         pacientes.inserir(paciente);
-        System.out.println("Adicionado...");
-
-        System.out.println("Consultando no adicionar...");
         consultar();
-        System.out.println("Consultado no adicionar...");
 
 //        FacesMessage msg = new FacesMessage("Paciente registrado!");
 //        FacesContext.getCurrentInstance().addMessage(null, msg);
