@@ -31,27 +31,16 @@ public class ControladorFuncionarios implements Serializable{
     private List<Funcionario> todosFuncionarios;
     
     public void consultar() {
-        System.out.println("Consultando...");
         todosFuncionarios = funcionarios.recuperarTodos();
-
-        for (Funcionario f : todosFuncionarios) {
-            System.out.println(f);
-        }
     }
 
     public void novo() {
-        System.out.println("Novo...");
         funcionario = new Funcionario();
     }
 
     public void adicionar() {
-        System.out.println("Adicionando...");
         funcionarios.inserir(funcionario);
-        System.out.println("Adicionado...");
-
-        System.out.println("Consultando no adicionar...");
         consultar();
-        System.out.println("Consultado no adicionar...");
     }
 
     public Funcionario getFuncionario() {
