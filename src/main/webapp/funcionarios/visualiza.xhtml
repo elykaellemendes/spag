@@ -10,6 +10,11 @@
     </h:head>
     <h:body>
         <ui:include src="../menu.xhtml" />
+        
+        <f:metadata>
+            <f:viewAction action="#{controladorFuncionarios.consultar}" />
+        </f:metadata>
+        
         <h:dataTable value="#{controladorFuncionarios.todosFuncionarios}" var="funcionario" border="1">
             <h:column>
                 <f:facet name="header">Código</f:facet>

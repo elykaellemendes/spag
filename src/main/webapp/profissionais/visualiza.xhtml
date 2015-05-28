@@ -10,6 +10,10 @@
     </h:head>
     <h:body>
         <ui:include src="../menu.xhtml" />
+        
+        <f:metadata>
+            <f:viewAction action="#{controladorFuncionarios.consultar}" />
+        </f:metadata>
 
         <h:dataTable value="#{controladorProfissionais.todosProfissionais}" var="profissional" border="1">
             <h:column>
