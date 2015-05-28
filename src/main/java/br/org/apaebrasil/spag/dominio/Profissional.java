@@ -39,8 +39,7 @@ public class Profissional implements Serializable {
     public Profissional() {
     }
 
-    public Profissional(int codigo, String nome, String cpf, String registroMedico, Usuario usuario,Especializacao especializacao) {
-        this.codigo = codigo;
+    public Profissional(String nome, String cpf, String registroMedico, Usuario usuario,Especializacao especializacao) {
         this.nome = nome;
         this.cpf = cpf;
         this.registroMedico = registroMedico;

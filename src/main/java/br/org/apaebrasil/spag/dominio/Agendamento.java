@@ -39,8 +39,7 @@ public class Agendamento implements Serializable {
     public Agendamento() {
     }
 
-    public Agendamento(int codigo, Date dataHora, Paciente paciente, Especializacao especializacao) {
-        this.codigo = codigo;
+    public Agendamento(Date dataHora, Paciente paciente, Especializacao especializacao) {
         this.dataHora = dataHora;
         this.paciente = paciente;
         this.especializacao = especializacao;
