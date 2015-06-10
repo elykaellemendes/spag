@@ -27,8 +27,8 @@ public class ControladorPacientes implements Serializable {
 
     @Inject
     private Pacientes pacientes;
-
-    private Paciente paciente = new Paciente();
+    
+    private Paciente paciente;
 
     private List<Paciente> todosPacientes;
 
@@ -50,9 +50,20 @@ public class ControladorPacientes implements Serializable {
 //        RequestContext.getCurrentInstance().execute("PF('novoPacienteDialog').hide()");
 //        RequestContext.getCurrentInstance().update("frm:msgs-geral");
     }
+    public void atualizar() {
+        pacientes.alterar(paciente);
+    }
 
     public Paciente getPaciente() {
         return paciente;
+    }
+
+    public Pacientes getPacientes() {
+        return pacientes;
+    }
+
+    public void setPacientes(Pacientes pacientes) {
+        this.pacientes = pacientes;
     }
 
     public List<Paciente> getTodosPacientes() {
