@@ -9,6 +9,8 @@ import br.org.apaebrasil.spag.dominio.Funcionario;
 import br.org.apaebrasil.spag.dominio.repositorio.Funcionarios;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,46 +21,54 @@ import javax.inject.Named;
  */
 @Named
 @ViewScoped
-public class ControladorFuncionarios implements Serializable{
-    
+public class ControladorFuncionarios implements Serializable {
+
     private static final long serialVersionUID = 1;
-    
-   @Inject
+
+    @Inject
     private Funcionarios funcionarios;
-    
+//   repositorio
+
     private Funcionario funcionario = new Funcionario();
-    
+//    selected
+
     private List<Funcionario> todosFuncionarios;
-    
-    public void consultar() {
-        System.out.println("Consultando...");
-        todosFuncionarios = funcionarios.recuperarTodos();
-
-        for (Funcionario f : todosFuncionarios) {
-            System.out.println(f);
-        }
-    }
-
-    public void novo() {
-        System.out.println("Novo...");
-        funcionario = new Funcionario();
-    }
-
-    public void adicionar() {
-        System.out.println("Adicionando...");
-        funcionarios.inserir(funcionario);
-        System.out.println("Adicionado...");
-
-        System.out.println("Consultando no adicionar...");
-        consultar();
-        System.out.println("Consultado no adicionar...");
-    }
 
     public Funcionario getFuncionario() {
         return funcionario;
     }
+    public void consultar() {
+        todosFuncionarios = funcionarios.recuperarTodos();
+    }
+
+    public void novo() {
+        funcionario = new Funcionario();
+    }
+
+    public void adicionar() {
+        funcionarios.inserir(funcionario);
+        consultar();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Funcionário cadastrado com sucesso!"));
+    }
+
+    public Funcionario recuperar(int codigo) {
+        return funcionarios.recuperar(codigo);
+    }
+
+    public void alterar(Funcionario f) {
+        funcionarios.alterar(f);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Funcionário alterado com sucesso!"));
+    }
 
     public List<Funcionario> getTodosFuncionarios() {
         return todosFuncionarios;
-    } 
+    }
+
+    public Funcionario porProfissional(String nome) {
+        return (Funcionario) funcionarios.porProfissional(nome);
+    }
+
+    public Funcionario porCpf(String cpf) {
+        return (Funcionario) funcionarios.porCpf(cpf);
+    }
 }
