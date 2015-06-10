@@ -29,6 +29,10 @@
                 <h:inputText value="#{controladorPacientes.paciente.dataNascimento}">
                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                 </h:inputText>
+<!--                Data de Nascimento
+                    <p:inputMask mask="99/99/9999" id="inDataNasc" value="#{controladorPacientes.paciente.dataNascimento}"
+                                 required="true" requiredMessage="Campo obrigatório"/>
+                    <p:message for="inDataNasc"/>-->
                 Filiação:
                 <h:inputText value="#{controladorPacientes.paciente.filiacao}"/>
                 Logradouro:
@@ -57,7 +61,8 @@
                 Cartão SUS:
                 <h:inputText value="#{controladorPacientes.paciente.cartaoSus}"/>
 
-                <h:commandButton value="Salvar" action="#{controladorPacientes.adicionar()}"/>
+                <p:commandButton value="Salvar" action="#{controladorPacientes.adicionar()}" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
+                <p:commandButton value="Cancelar" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
             </h:panelGrid>
         </h:form>
     </h:body>
