@@ -10,76 +10,92 @@
     </h:head>
     <h:body>
         <ui:include src="../menu.xhtml" />
+
         <f:metadata>
             <f:viewAction action="#{controladorPacientes.consultar}" />
         </f:metadata>
 
-        <h:dataTable value="#{controladorPacientes.todosPacientes}" var="paciente" border="1">
-            <h:column>
-                <f:facet name="header">Código</f:facet>
-                    #{paciente.codigo}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Nome</f:facet>
-                    #{paciente.nome}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Sexo</f:facet>
-                    #{paciente.sexo}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Data Nascimento</f:facet>
-                    #{paciente.dataNascimento}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Filiação</f:facet>
-                    #{paciente.filiacao}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Logradouro</f:facet>
-                    #{paciente.endereco.logradouro}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Número</f:facet>
-                    #{paciente.endereco.numero}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Complemento</f:facet>
-                    #{paciente.endereco.complemento}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Bairro</f:facet>
-                    #{paciente.endereco.bairro}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Cidade</f:facet>
-                    #{paciente.endereco.cidade}
-            </h:column>
-            <h:column>
-                <f:facet name="header">UF</f:facet>
-                    #{paciente.endereco.uf}
-            </h:column>
-            <h:column>
-                <f:facet name="header">CEP</f:facet>
-                    #{paciente.endereco.cep}
-            </h:column>            
-            <h:column>
-                <f:facet name="header">Estado Civil</f:facet>
-                    #{paciente.estadoCivil}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Naturalidade</f:facet>
-                    #{paciente.naturalidade}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Procedência</f:facet>
-                    #{paciente.procedencia}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Cartão SUS</f:facet>
-                    #{paciente.cartaoSus}
-            </h:column>                   
-        </h:dataTable>
+        <h:form id="visualizaPacientes">
+
+            <p:fieldset legend="Dados">
+                <div class="centro">
+                    <p:dataTable id="tabelaforn" value="#{controladorPacientes.todosPacientes}" var="paciente" 
+                                 rowKey="#{paciente.codigo}" paginator="true" rows="10">
+                        
+                        <p:column headerText="Nome" filterValue="" filterBy="#{paciente.nome}">
+                            <h:outputText value="#{paciente.nome}"/>
+                        </p:column>
+                        <p:column headerText="Cartão do SUS" filterValue="" filterBy="#{paciente.cartaoSus}">
+                            <h:outputText value="#{paciente.cartaoSus}"/>
+                        </p:column>
+                        <p:column headerText="Cidade" filterValue="" filterBy="#{paciente.endereco.cidade}">
+                            <h:outputText value="#{paciente.endereco.cidade}"/>
+                        </p:column>
+
+                        <p:column style="width:32px;text-align: center">
+                            <p:commandButton oncomplete="location.href='../pacientes/altera.xhtml'" icon="ui-icon-pencil" title="Atualizar"/>
+                        </p:column>
+
+                        <p:column style="width:32px;text-align: center">
+                            <p:commandButton update=":visualizaPacientes:dialogo" oncomplete="PF('painel').show()" title="Ver" icon="ui-icon ui-icon-search">
+                                <f:setPropertyActionListener value="#{paciente}" target="#{controladorPacientes.paciente}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+
+                </div>
+            </p:fieldset>
+            <p:dialog id="dialogo" closable="false" resizable="false"
+                      modal="true" visible="false" widgetVar="painel">
+
+                <f:facet name="header">
+                    Resultado
+                </f:facet>
+
+                <h:panelGrid columns="2">
+                    Nome:
+                    <h:outputText value="#{controladorPacientes.paciente.nome}"/>
+                    Sexo:
+                    <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.sexo}"
+                                     required="true">
+                        <f:selectItems value="#{controladorPacientes.sexos}" />
+                    </h:selectOneMenu>
+                    Data de Nascimento:
+                    <h:outputText value="#{controladorPacientes.paciente.dataNascimento}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                    Filiação:
+                    <h:outputText value="#{controladorPacientes.paciente.filiacao}"/>
+                    Logradouro:
+                    <h:outputText value="#{controladorPacientes.paciente.endereco.logradouro}"/>
+                    Número:
+                    <h:outputText value="#{controladorPacientes.paciente.endereco.numero}"/>
+                    Complemento:
+                    <h:outputText value="#{controladorPacientes.paciente.endereco.complemento}"/>
+                    Bairro:
+                    <h:outputText value="#{controladorPacientes.paciente.endereco.bairro}"/>
+                    Cidade:
+                    <h:outputText value="#{controladorPacientes.paciente.endereco.cidade}"/>
+                    UF:
+                    <h:outputText value="#{controladorPacientes.paciente.endereco.uf}"/>
+                    CEP:
+                    <h:outputText value="#{controladorPacientes.paciente.endereco.cep}"/>
+                    Estado Civil:
+                    <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.estadoCivil}"
+                                     required="true">
+                        <f:selectItems value="#{controladorPacientes.estadosCivil}" />
+                    </h:selectOneMenu>
+                    Naturalidade:
+                    <h:outputText value="#{controladorPacientes.paciente.naturalidade}"/>
+                    Procedência:
+                    <h:outputText value="#{controladorPacientes.paciente.procedencia}"/>
+                    Cartão SUS:
+                    <h:outputText value="#{controladorPacientes.paciente.cartaoSus}"/>
+
+                </h:panelGrid>
+                <p:commandButton value="Fechar" oncomplete="location.href='../pacientes/visualiza.xhtml'" ajax="false"/>
+            </p:dialog>
+        </h:form>
     </h:body>
 </html>
 
