@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <ui:composition 
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
@@ -11,18 +10,32 @@
         <p:growl id="menu"/> 
 
         <p:menubar>
-            <p:menuitem value="Início" icon="ui-icon-home" url="paginaInicial.xhtml"/>
+            <p:menuitem value="Início" icon="ui-icon-home" url="../inicio.xhtml"/>
 
             <p:submenu label="Pacientes">
-                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="pacientes/cadastro.xhtml"/>
-                <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="pacientes/visualiza.xhtml"/>
+                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="../pacientes/cadastro.xhtml"/>
+                <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="../pacientes/visualiza.xhtml"/>
 
                 <p:separator /> 
             </p:submenu>
 
             <p:submenu label="Profissionais">
-                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="cadastroProfissionais.xhtml"/>
-                <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="visualizaProfissionais.xhtml"/>
+                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="../profissionais/cadastro.xhtml"/>
+                <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="../profissionais/visualiza.xhtml"/>
+
+                <p:separator /> 
+            </p:submenu>
+
+            <p:submenu label="Funcionários">
+                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="../funcionarios/cadastro.xhtml"/>
+                <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="../funcionarios/visualiza.xhtml"/>
+
+                <p:separator /> 
+            </p:submenu>
+            
+            <p:submenu label="Consultas">
+                <p:menuitem value="Agendamento" icon="ui-icon-circle-plus" update="menu" url="../funcionarios/cadastro.xhtml"/>
+                <p:menuitem value="Prontuário" icon="ui-icon-search" update="menu" url="../funcionarios/visualiza.xhtml"/>
 
                 <p:separator /> 
             </p:submenu>
