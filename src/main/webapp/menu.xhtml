@@ -13,29 +13,29 @@
             <p:menuitem value="Início" icon="ui-icon-home" url="../inicio.xhtml"/>
 
             <p:submenu label="Pacientes">
-                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="../pacientes/cadastro.xhtml"/>
-                <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="../pacientes/visualiza.xhtml"/>
+                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" outcome="/pacientes/cadastro" />
+                <p:menuitem value="Visualizar" icon="ui-icon-search" outcome="/pacientes/visualiza" />
 
                 <p:separator /> 
             </p:submenu>
 
             <p:submenu label="Profissionais">
-                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="../profissionais/cadastro.xhtml"/>
-                <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="../profissionais/visualiza.xhtml"/>
+                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" outcome="/profissionais/cadastro"/>
+                <p:menuitem value="Visualizar" icon="ui-icon-search" outcome="/profissionais/visualiza"/>
 
                 <p:separator /> 
             </p:submenu>
 
             <p:submenu label="Funcionários">
-                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" update="menu" url="../funcionarios/cadastro.xhtml"/>
-                <p:menuitem value="Visualizar" icon="ui-icon-search" update="menu" url="../funcionarios/visualiza.xhtml"/>
+                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" outcome="/funcionarios/cadastro"/>
+                <p:menuitem value="Visualizar" icon="ui-icon-search" outcome="/funcionarios/visualiza"/>
 
                 <p:separator /> 
             </p:submenu>
             
             <p:submenu label="Consultas">
-                <p:menuitem value="Agendamento" icon="ui-icon-circle-plus" update="menu" url="../funcionarios/cadastro.xhtml"/>
-                <p:menuitem value="Prontuário" icon="ui-icon-search" update="menu" url="../funcionarios/visualiza.xhtml"/>
+                <p:menuitem value="Agendamento" icon="ui-icon-circle-plus" outcome="/consultas/agendamentos"/>
+                <p:menuitem value="Prontuário" icon="ui-icon-search" outcome="/consultas/prontuario"/>
 
                 <p:separator /> 
             </p:submenu>
