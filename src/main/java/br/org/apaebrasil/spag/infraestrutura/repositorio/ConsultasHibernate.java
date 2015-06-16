@@ -7,6 +7,7 @@ package br.org.apaebrasil.spag.infraestrutura.repositorio;
 
 import java.util.List;
 import br.org.apaebrasil.spag.dominio.Consulta;
+import br.org.apaebrasil.spag.dominio.Paciente;
 import br.org.apaebrasil.spag.dominio.repositorio.Consultas;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ import java.util.Date;
  */
 public class ConsultasHibernate extends RepositorioHibernate<Consulta, Integer> implements Consultas {
     @Override
-    public List<Consulta> porPaciente(String nome) {
+    public List<Consulta> porPaciente(Paciente nome) {
         return manager.createQuery("from Consulta c where c.nome = :nome").getResultList();
     }
 
