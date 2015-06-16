@@ -6,6 +6,8 @@
 package br.org.apaebrasil.spag.infraestrutura.repositorio;
 
 import br.org.apaebrasil.spag.dominio.Agendamento;
+import br.org.apaebrasil.spag.dominio.Paciente;
+import br.org.apaebrasil.spag.dominio.Profissional;
 import br.org.apaebrasil.spag.dominio.repositorio.Agendamentos;
 import java.util.Date;
 import java.util.List;
@@ -22,12 +24,12 @@ public class AgendamentosHibernate extends RepositorioHibernate<Agendamento, Int
     }
 
     @Override
-    public List<Agendamento> porPaciente(String nome) {
+    public List<Agendamento> porPaciente(Paciente nome) {
         return manager.createQuery("from Agendamento a where a.nome = :nome").getResultList();
     }
 
     @Override
-    public List<Agendamento> porEspecializacao(String especializacao) {
+    public List<Agendamento> porEspecializacao(Profissional especializacao) {
         return manager.createQuery("from Agendamento a where a.especializacao = :especializacao").getResultList();
     }
 }
