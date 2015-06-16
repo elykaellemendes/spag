@@ -10,25 +10,70 @@
     </h:head>
     <h:body>
         <ui:include src="../menu.xhtml" />
-        
+
         <f:metadata>
-            <f:viewAction action="#{controladorFuncionarios.consultar}" />
+            <f:viewAction action="#{controladorFuncionarios.consultar()}" />
         </f:metadata>
-        
-        <h:dataTable value="#{controladorFuncionarios.todosFuncionarios}" var="funcionario" border="1">
-            <h:column>
-                <f:facet name="header">Código</f:facet>
-                    #{funcionario.codigo}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Nome</f:facet>
-                    #{funcionario.nome}
-            </h:column>
-            <h:column>
-                <f:facet name="header">cpf</f:facet>
-                    #{funcionario.cpf}
-            </h:column>              
-        </h:dataTable>
+
+        <p:fieldset legend="Dados dos funcionários">
+            <div class="centro">
+
+                <p:dataTable id="tabelaforn" value="#{controladorFuncionarios.todosFuncionarios}" var="funcionario"
+                             rowKey="#{funcionario.codigo}" paginator="true" rows="10">>
+                    <h:column>
+                        <f:facet name="header">Código</f:facet>
+                            #{funcionario.codigo}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Nome</f:facet>
+                            #{funcionario.nome}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">cpf</f:facet>
+                            #{funcionario.cpf}
+                    </h:column>
+<!--                    <p:column style="width:32px;text-align: center">
+                        <p:commandButton  oncomplete="location.href='funcionarios/altera.xhtml'" title="Atualizar" icon="ui-icon-pencil">
+                            <f:setPropertyActionListener value="#{funcionario}" target="#{controladorFuncionarios.inserir()}"/>
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column style="width:32px;text-align: center">
+                        <p:commandButton update=":visualiza:dialogo1" oncomplete="PF('painel').show()" title="Visualizar" icon="ui-icon ui-icon-search">
+                            <f:setPropertyActionListener value="#{funcionario}" target="#{controladorFuncionarios.recuperarTodos()}"/>
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column style="width:32px;text-align: center">
+                        <p:commandButton update=":visualiza:dialogo2" oncomplete="PF('painel1').show()" title="Excluir" icon="ui-icon ui-icon-trash">
+                            <f:setPropertyActionListener value="#{funcionario}" target="#{controladorFuncionarios.recuperarTodos()}"/>
+                        </p:commandButton>
+                    </p:column>-->
+                </p:dataTable>
+            </div>
+        </p:fieldset>
+        <p:dialog id="dialogo1" closable="false" resizable="false"
+                  modal="true" visible="false" widgetVar="painel">
+
+            <f:facet name="header">
+                Dados
+            </f:facet><!--
+
+-->            <p:panelGrid columns="2">
+
+                <h:outputText value="Nome"/>
+                <h:outputText value="#{controladorFuncionarios.funcionario.nome}"/>
+            </p:panelGrid><!--
+
+            <p:commandButton value="Fechar" oncomplete="location.href='../funcionarios/visualiza.xhtml'" ajax="false"/>
+-->        </p:dialog>
+
+<!--        <p:confirmDialog id="dialogo2" closable="false" visible="false"
+                         message="Deseja realmente excluir esse funcionário?" widgetVar="painel1">
+            <p:commandButton value="Sim" action="#{controladorRevendedor.deletar(controladorRevendedor.selectedRevend)}"
+                             oncomplete="location.href='../funcionarios/visualiza.xhtml'" ajax="false"/>
+            <p:commandButton value="Não" oncomplete="location.href='../funcionarios/visualiza.xhtml'"/>
+        </p:confirmDialog>-->
     </h:body>
 </html>
 
