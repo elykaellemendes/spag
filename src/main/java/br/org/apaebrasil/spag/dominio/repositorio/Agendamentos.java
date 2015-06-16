@@ -6,6 +6,8 @@
 package br.org.apaebrasil.spag.dominio.repositorio;
 
 import br.org.apaebrasil.spag.dominio.Agendamento;
+import br.org.apaebrasil.spag.dominio.Paciente;
+import br.org.apaebrasil.spag.dominio.Profissional;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +17,6 @@ import java.util.List;
  */
 public interface Agendamentos extends Repositorio<Agendamento, Integer> {
     public List<Agendamento> porDataHora(Date dataHora);
-    public List<Agendamento> porPaciente(String nome);
-    public List<Agendamento> porEspecializacao(String nome);
+    public List<Agendamento> porPaciente(Paciente nome);
+    public List<Agendamento> porEspecializacao(Profissional especializacao);
 }
