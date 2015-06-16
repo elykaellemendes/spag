@@ -3,66 +3,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta charset="UTF-8"/>
         <title>SPAG:Cadastro de Pacientes</title>
     </h:head>
     <h:body>
-        <ui:include src="../menu.xhtml" />
+        <!--        <ui:include src="menu.xhtml" />-->
 
         <f:metadata>
             <f:viewAction action="#{controladorPacientes.consultar}" />
         </f:metadata>
 
-        <h:form>
-            <h:panelGrid columns="2">
+       <h:form id="cadastroPaciente">
+            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
+            <h:panelGrid columns="2" cellpadding="5">
                 Nome:
-                <h:inputText value="#{controladorPacientes.paciente.nome}"/>
+                <p:inputText value="#{controladorPacientes.paciente.nome}"/>
                 Sexo:
                 <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.sexo}"
                                  required="true">
                     <f:selectItems value="#{controladorPacientes.sexos}" />
                 </h:selectOneMenu>
                 Data de Nascimento:
-                <h:inputText value="#{controladorPacientes.paciente.dataNascimento}">
-                    <f:convertDateTime pattern="dd/MM/yyyy"/>
-                </h:inputText>
-<!--                Data de Nascimento
-                    <p:inputMask mask="99/99/9999" id="inDataNasc" value="#{controladorPacientes.paciente.dataNascimento}"
-                                 required="true" requiredMessage="Campo obrigatório"/>
-                    <p:message for="inDataNasc"/>-->
+                <p:inputMask mask="99/99/9999" value="#{controladorPacientes.paciente.dataNascimento}"/>
                 Filiação:
-                <h:inputText value="#{controladorPacientes.paciente.filiacao}"/>
+                <p:inputText value="#{controladorPacientes.paciente.filiacao}"/>
                 Logradouro:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.logradouro}"/>
+                <p:inputText value="#{controladorPacientes.paciente.endereco.logradouro}"/>
                 Número:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.numero}"/>
+                <p:inputText value="#{controladorPacientes.paciente.endereco.numero}"/>
                 Complemento:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.complemento}"/>
+                <p:inputText value="#{controladorPacientes.paciente.endereco.complemento}"/>
                 Bairro:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.bairro}"/>
+                <p:inputText value="#{controladorPacientes.paciente.endereco.bairro}"/>
                 Cidade:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.cidade}"/>
+                <p:inputText value="#{controladorPacientes.paciente.endereco.cidade}"/>
                 UF:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.uf}"/>
+                <p:inputText value="#{controladorPacientes.paciente.endereco.uf}"/>
                 CEP:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.cep}"/>
+                <p:inputMask mask="99999-999" value="#{controladorPacientes.paciente.endereco.cep}"/>
                 Estado Civil:
                 <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.estadoCivil}"
                                  required="true">
                     <f:selectItems value="#{controladorPacientes.estadosCivil}" />
                 </h:selectOneMenu>
                 Naturalidade:
-                <h:inputText value="#{controladorPacientes.paciente.naturalidade}"/>
+                <p:inputText value="#{controladorPacientes.paciente.naturalidade}"/>
                 Procedência:
-                <h:inputText value="#{controladorPacientes.paciente.procedencia}"/>
+                <p:inputText value="#{controladorPacientes.paciente.procedencia}"/>
                 Cartão SUS:
-                <h:inputText value="#{controladorPacientes.paciente.cartaoSus}"/>
+                <p:inputText value="#{controladorPacientes.paciente.cartaoSus}"/>
 
-                <p:commandButton value="Salvar" action="#{controladorPacientes.adicionar()}" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
-                <p:commandButton value="Cancelar" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
+                <p:commandButton value="Salvar" action="#{controladorPacientes.adicionar()}"/>
+                <p:commandButton value="Cancelar"/>
             </h:panelGrid>
         </h:form>
     </h:body>
