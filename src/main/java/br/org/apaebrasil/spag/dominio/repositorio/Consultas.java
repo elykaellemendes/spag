@@ -6,6 +6,7 @@
 package br.org.apaebrasil.spag.dominio.repositorio;
 
 import br.org.apaebrasil.spag.dominio.Consulta;
+import br.org.apaebrasil.spag.dominio.Paciente;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,6 @@ import java.util.List;
  * @author Pc
  */
 public interface Consultas extends Repositorio<Consulta, Integer>{
-    public List<Consulta> porPaciente(String nome);
+    public List<Consulta> porPaciente(Paciente nome);
     public List<Consulta> porDataHora(Date dataHora);
 }
