@@ -3,12 +3,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <ui:include src="../menu.xhtml" />
+        <f:metadata>
+            <f:viewAction action="#{controladorFuncionarios.consultar}" />
+        </f:metadata>
+
+        <h:form id="cadastro">
+            <h:panelGrid columns="3" cellpadding="5">
+                Nome:
+                <h:inputText id="inNome" value="#{controladorFuncionarios.funcionario.nome}"
+                             required="true" requiredMessage="Campo obrigatório"/>
+                <p:message for="inNome"/>
+                Cpf:
+                <h:inputText id="inCpf" value="#{controladorFuncionarios.funcionario.cpf}"
+                             required="true" requiredMessage="Campo obrigatório"/>
+                <p:message for="inCpf"/>
+
+                <p:commandButton value="Salvar" action="#{controladorFuncionarios.alterar()}" oncomplete="location.href='../funcionarios/visualiza.xhtml'"/>
+                <p:commandButton value="Cancelar" oncomplete="location.href='../funcionarios/visualiza.xhtml'"/>
+            </h:panelGrid>
     </h:body>
 </html>
 
