@@ -3,19 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <meta charset="UTF-8"/>
         <title>SPAG:Cadastro de Pacientes</title>
     </h:head>
     <h:body>
-        <!--        <ui:include src="menu.xhtml" />-->
+        <ui:include src="/menu.xhtml" />
 
         <f:metadata>
             <f:viewAction action="#{controladorPacientes.consultar}" />
         </f:metadata>
 
-       <h:form id="cadastroPaciente">
+        <h:form id="cadastroPaciente">
             <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
             <h:panelGrid columns="2" cellpadding="5">
                 Nome:
