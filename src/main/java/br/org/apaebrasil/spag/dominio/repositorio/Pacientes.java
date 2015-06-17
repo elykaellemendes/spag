@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface Pacientes extends Repositorio<Paciente, Integer> {
 
-    public List<Paciente> porPaciente(String nome);
+    public List<Paciente> porNome(String nome);
 
     public List<Paciente> porCidade(String cidade);
 

@@ -16,7 +16,7 @@ import java.util.List;
 public class PacientesHibernate extends RepositorioHibernate<Paciente, Integer> implements Pacientes {
 
     @Override
-    public List<Paciente> porPaciente(String nome) {
+    public List<Paciente> porNome(String nome) {
         return manager.createQuery("from Paciente p where p.nome = :nome").getResultList();
     }
 
