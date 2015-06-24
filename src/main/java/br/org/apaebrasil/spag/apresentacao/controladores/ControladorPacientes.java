@@ -11,6 +11,8 @@ import br.org.apaebrasil.spag.dominio.Sexo;
 import br.org.apaebrasil.spag.dominio.repositorio.Pacientes;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -43,12 +45,7 @@ public class ControladorPacientes implements Serializable {
     public void adicionar() {
         pacientes.inserir(paciente);
         consultar();
-
-//        FacesMessage msg = new FacesMessage("Paciente registrado!");
-//        FacesContext.getCurrentInstance().addMessage(null, msg);
-//
-//        RequestContext.getCurrentInstance().execute("PF('novoPacienteDialog').hide()");
-//        RequestContext.getCurrentInstance().update("frm:msgs-geral");
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Paciente cadastrado com sucesso!"));
     }
     public void atualizar() {
         pacientes.alterar(paciente);
