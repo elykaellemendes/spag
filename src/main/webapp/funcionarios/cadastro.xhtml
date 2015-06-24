@@ -11,21 +11,20 @@
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
-        
-        <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
 
         <f:metadata>
             <f:viewAction action="#{controladorFuncionarios.consultar}" />
         </f:metadata>
 
         <h:form id="cadastro">
+            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
             <h:panelGrid columns="3" cellpadding="5">
                 Nome:
                 <h:inputText id="inNome" value="#{controladorFuncionarios.funcionario.nome}"
                              required="true" requiredMessage="Campo obrigatório"/>
                 <p:message for="inNome"/>
                 Cpf:
-                <h:inputText id="inCpf" value="#{controladorFuncionarios.funcionario.cpf}"
+                <p:inputMask mask="999.999.999-99" id="inCpf" value="#{controladorFuncionarios.funcionario.cpf}"
                              required="true" requiredMessage="Campo obrigatório"/>
                 <p:message for="inCpf"/>
 
