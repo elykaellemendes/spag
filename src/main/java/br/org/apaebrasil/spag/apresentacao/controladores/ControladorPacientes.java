@@ -47,7 +47,7 @@ public class ControladorPacientes implements Serializable {
         consultar();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Paciente cadastrado com sucesso!"));
     }
-    public void atualizar() {
+    public void alterar() {
         pacientes.alterar(paciente);
     }
 
