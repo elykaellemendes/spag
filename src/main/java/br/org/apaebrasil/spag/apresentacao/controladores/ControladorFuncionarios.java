@@ -54,9 +54,9 @@ public class ControladorFuncionarios implements Serializable {
     public Funcionario recuperar(int codigo) {
         return funcionarios.recuperar(codigo);
     }
-
-    public void alterar(Funcionario f) {
-        funcionarios.alterar(f);
+    
+    public void alterar() {
+        funcionarios.alterar(funcionario);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Funcionário alterado com sucesso!"));
     }
 
