@@ -10,26 +10,41 @@
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
+        
+         <f:metadata>
+             <f:viewAction action="#{controladorAgendamentos.consultar}" />
+        </f:metadata>
 
         <h:form id="agendamento">
             <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
-            <h:panelGrid columns="2" cellpadding="5">
-                Data:
-                <p:calendar id="mask" pattern="dd-MM-yyyy" value="#{controladorAgendamentos.agendamento.dataHora}" />
-                <p:spacer width="20"/>
+            <h:panelGrid columns="3" cellpadding="5">
+                Data: 
+                <p:calendar id="mask" pattern="dd-MM-yyyy" value="#{agendamento.dataHora}" />
+                <p:spacer width="20"/><br></br>
                 Especialização:
-                <h:selectOneMenu label="especialização" value="#{controladorAgendamentos.agendamento.especializacao}"
+                <h:selectOneMenu label="especialização" value="#{agendamento.especializacao}"
                                  required="true">
                     <f:selectItems value="#{controladorProfissionais.especializacao}" />
-                </h:selectOneMenu>
-                Paciente:
-                <h:selectOneMenu label="Paciente" value="#{controladorPacientes.consultar()}"
-                                 required="true">
-                    <f:selectItems value="#{controladorPacientes.todosPacientes}" />
-                </h:selectOneMenu>
+                </h:selectOneMenu><br></br>
+                
+                <h:outputText value="Selecione um Paciente*"/>
+                <p:dataTable id="table" style="width:600px;font-size:small;font-weight:bold" var="item" selectionMode="single"
+                                     scrollable="true" scrollHeight="113" scrollRows="20" liveScroll="true"
+                                     value="#{controladorPacientes.todosPacientes}"
+                                     selection="#{controladorPacientes.consultar()}" rowKey="#{item.codigo}">
 
-                <p:commandButton value="Salvar" action="#{controladorAgendamentos.adicionar()}"/>
-                <p:commandButton value="Cancelar"/>
+                            <p:column headerText="Nome">
+                                <h:outputText value="#{item.nome}" />
+                            </p:column>
+
+                            <p:column filterValue="Cartão do SUS" filterBy="#{item.cartaoSus}">
+                                <h:outputText value="#{item.cartaoSus}" />
+                            </p:column>
+
+                        </p:dataTable><br></br>
+
+                <p:commandButton value="Salvar" update="agendamento" action="#{controladorAgendamentos.adicionar()}" oncomplete="location.href='../consultas/agenda.xhtml'"/>
+                <p:commandButton value="Cancelar" oncomplete="location.href='../consultas/agenda.xhtml'"/>
             </h:panelGrid>
         </h:form>
     </h:body>
