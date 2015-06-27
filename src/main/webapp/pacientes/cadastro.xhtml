@@ -20,7 +20,7 @@
         <h:form id="cadastroPaciente">
             <p:growl id="gro" life="10000" showSummary="true" showDetail="true"/>
             <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
-                <h:panelGrid columns="2" cellpadding="5">
+                <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
                     <p:outputLabel for="nome" value="Nome:"/>
                     <p:inputText id="nome" value="#{controladorPacientes.paciente.nome}" required="true" requiredMessage="Campo obrigatório" size="50"/>
 
@@ -47,7 +47,7 @@
                 </h:panelGrid>
             </p:panel>
             <p:panel id="panel2" header="Endereço" style="margin-bottom:10px;">
-                <h:panelGrid columns="2" cellpadding="5">
+                <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
                     <p:outputLabel for="logradouro" value="Logradouro:"/>
                     <p:inputText id="logradouro" value="#{controladorPacientes.paciente.endereco.logradouro}" size="50"/>
 
@@ -71,7 +71,7 @@
                 </h:panelGrid>
             </p:panel>
             <p:panel id="panel3" header="Saúde" style="margin-bottom:10px;">
-                <h:panelGrid columns="2" cellpadding="5">
+                <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
                     <p:outputLabel for="procedencia" value="Procedência:"/>
                     <p:inputText id="procedencia" value="#{controladorPacientes.paciente.procedencia}" size="50"/>
 
