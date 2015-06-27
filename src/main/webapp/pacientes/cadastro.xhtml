@@ -18,46 +18,48 @@
 
         <h:form id="cadastroPaciente">
             <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
-            <h:panelGrid columns="2" cellpadding="5">
+            <h:panelGrid columns="1" cellpadding="5">
                 Nome:
-                <p:inputText value="#{controladorPacientes.paciente.nome}"/>
+                <p:inputText id="inNome" value="#{controladorPacientes.paciente.nome}"
+                             required="true" requiredMessage="Campo obrigatório"/>
+                <p:message for="inNome"/>
                 Sexo:
-                <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.sexo}"
+                <h:selectOneMenu id="inSexo" label="sexo" value="#{controladorPacientes.paciente.sexo}"
                                  required="true">
                     <f:selectItems value="#{controladorPacientes.sexos}" />
                 </h:selectOneMenu>
                 Data de Nascimento:
-                <p:inputMask mask="99/99/9999" value="#{controladorPacientes.paciente.dataNascimento}"/>
+                <p:inputMask id="inDataNas" mask="99/99/9999" value="#{controladorPacientes.paciente.dataNascimento}"/>
                 Filiação:
-                <p:inputText value="#{controladorPacientes.paciente.filiacao}"/>
+                <p:inputText id="inFiliacao" value="#{controladorPacientes.paciente.filiacao}"/>
                 Logradouro:
-                <p:inputText value="#{controladorPacientes.paciente.endereco.logradouro}"/>
+                <p:inputText id="inLogradouro" value="#{controladorPacientes.paciente.endereco.logradouro}"/>
                 Número:
-                <p:inputText value="#{controladorPacientes.paciente.endereco.numero}"/>
+                <p:inputText id="inNumero" value="#{controladorPacientes.paciente.endereco.numero}"/>
                 Complemento:
-                <p:inputText value="#{controladorPacientes.paciente.endereco.complemento}"/>
+                <p:inputText id="inComplemento" value="#{controladorPacientes.paciente.endereco.complemento}"/>
                 Bairro:
-                <p:inputText value="#{controladorPacientes.paciente.endereco.bairro}"/>
+                <p:inputText id="inBairro" value="#{controladorPacientes.paciente.endereco.bairro}"/>
                 Cidade:
-                <p:inputText value="#{controladorPacientes.paciente.endereco.cidade}"/>
+                <p:inputText id="inCidade" value="#{controladorPacientes.paciente.endereco.cidade}"/>
                 UF:
-                <p:inputText value="#{controladorPacientes.paciente.endereco.uf}"/>
+                <p:inputText id="inUf" value="#{controladorPacientes.paciente.endereco.uf}"/>
                 CEP:
-                <p:inputMask mask="99999-999" value="#{controladorPacientes.paciente.endereco.cep}"/>
+                <p:inputMask id="inCep" mask="99999-999" value="#{controladorPacientes.paciente.endereco.cep}"/>
                 Estado Civil:
-                <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.estadoCivil}"
+                <h:selectOneMenu id="inEstadoCivil" label="sexo" value="#{controladorPacientes.paciente.estadoCivil}"
                                  required="true">
                     <f:selectItems value="#{controladorPacientes.estadosCivil}" />
                 </h:selectOneMenu>
                 Naturalidade:
-                <p:inputText value="#{controladorPacientes.paciente.naturalidade}"/>
+                <p:inputText id="inNaturalidade" value="#{controladorPacientes.paciente.naturalidade}"/>
                 Procedência:
-                <p:inputText value="#{controladorPacientes.paciente.procedencia}"/>
+                <p:inputText id="inProcedencia" value="#{controladorPacientes.paciente.procedencia}"/>
                 Cartão SUS:
-                <p:inputText value="#{controladorPacientes.paciente.cartaoSus}"/>
+                <p:inputText id="inCartaoSus" value="#{controladorPacientes.paciente.cartaoSus}"/>
 
-                <p:commandButton value="Salvar" action="#{controladorPacientes.adicionar()}"/>
-                <p:commandButton value="Cancelar"/>
+                <p:commandButton value="Salvar" update="cadastroPaciente" action="#{controladorPacientes.adicionar()}" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
+                <p:commandButton value="Cancelar" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
             </h:panelGrid>
         </h:form>
     </h:body>

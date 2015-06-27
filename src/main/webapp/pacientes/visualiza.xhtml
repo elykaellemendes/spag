@@ -56,14 +56,9 @@
                     Nome:
                     <h:outputText value="#{controladorPacientes.paciente.nome}"/>
                     Sexo:
-                    <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.sexo}"
-                                     required="true">
-                        <f:selectItems value="#{controladorPacientes.sexos}" />
-                    </h:selectOneMenu>
+                    <h:outputText value="#{controladorPacientes.paciente.sexo}"/>
                     Data de Nascimento:
-                    <h:outputText value="#{controladorPacientes.paciente.dataNascimento}">
-                        <f:convertDateTime pattern="dd/MM/yyyy"/>
-                    </h:outputText>
+                    <h:outputText value="#{controladorPacientes.paciente.dataNascimento}"/>
                     Filiação:
                     <h:outputText value="#{controladorPacientes.paciente.filiacao}"/>
                     Logradouro:
@@ -81,10 +76,7 @@
                     CEP:
                     <h:outputText value="#{controladorPacientes.paciente.endereco.cep}"/>
                     Estado Civil:
-                    <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.estadoCivil}"
-                                     required="true">
-                        <f:selectItems value="#{controladorPacientes.estadosCivil}" />
-                    </h:selectOneMenu>
+                    <h:outputText value="#{controladorPacientes.paciente.estadoCivil}"/>
                     Naturalidade:
                     <h:outputText value="#{controladorPacientes.paciente.naturalidade}"/>
                     Procedência:

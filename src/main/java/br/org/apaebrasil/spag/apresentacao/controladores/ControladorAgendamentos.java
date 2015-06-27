@@ -51,7 +51,6 @@ public class ControladorAgendamentos implements Serializable {
 
     public void alterar() {
         agendamentos.alterar(agendamento);
-        consultar();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Agendamento alterado com sucesso!"));
     }
 
@@ -77,10 +76,6 @@ public class ControladorAgendamentos implements Serializable {
 
     public void setAgendamento(Agendamento agendamento) {
         this.agendamento = agendamento;
-    }
-
-    public Agendamentos getAgendamentos() {
-        return agendamentos;
     }
 
     public List<Agendamento> getTodosAgendamentos() {

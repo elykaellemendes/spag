@@ -10,33 +10,38 @@
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
-        
+
         <f:metadata>
-            <f:viewAction action="#{controladorFuncionarios.consultar}" />
+            <f:viewAction action="#{controladorProfissionais.consultar}" />
         </f:metadata>
 
-        <h:dataTable value="#{controladorProfissionais.todosProfissionais}" var="profissional" border="1">
-            <h:column>
-                <f:facet name="header">Código</f:facet>
-                    #{profissional.codigo}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Nome</f:facet>
-                    #{profissional.nome}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Cpf</f:facet>
-                    #{profissional.cpf}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Registro Medico</f:facet>
-                    #{profissional.registroMedico}
-            </h:column>            
-            <h:column>
-                <f:facet name="header">Especialização</f:facet>
-                    #{profissional.especializacao}
-            </h:column>                  
-        </h:dataTable>
+        <h:form id="visualizaiosProfissionais">
+            <p/>
+            <p:fieldset>
+                <div class="centro">
+                    <p:dataTable id="tabelaforn" value="#{controladorProfissionais.todosProfissionais}" var="profissional" 
+                                 rowKey="#{profissional.codigo}" paginator="true" rows="10">
+
+                        <p:column headerText="Nome" filterValue="" filterBy="#{profissional.nome}">
+                            <h:outputText value="#{profissional.nome}"/>
+                        </p:column>
+                        <p:column headerText="CPF" filterValue="" filterBy="#{profissional.cpf}">
+                            <h:outputText value="#{profissional.cpf}"/>
+                        </p:column>
+                        <p:column headerText="Registro Médico" filterValue="" filterBy="#{profissional.registroMedico}">
+                            <h:outputText value="#{profissional.registroMedico}"/>
+                        </p:column>
+                        <p:column headerText="Especialização" filterValue="" filterBy="#{profissional.especializacao}">
+                            <h:outputText value="#{profissional.especializacao}"/>
+                        </p:column>
+
+                        <p:column style="width:32px;text-align: center">
+                            <p:commandButton oncomplete="location.href='../profissionais/altera.xhtml'" icon="ui-icon-pencil" title="Alterar"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+                </p:fieldset>
+        </h:form>
     </h:body>
 </html>
 

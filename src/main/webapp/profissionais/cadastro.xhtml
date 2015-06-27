@@ -16,30 +16,31 @@
             <f:viewAction action="#{controladorProfissionais.consultar}" />
         </f:metadata>
 
-        <h:form>
+        <h:form id="cadastroProfissional">
+            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
+            <h:panelGrid columns="3" cellpadding="5">
 
-            <h:panelGrid columns="2" cellpadding="5">
-                <h:outputText value="Nome"/>
+                Nome:
                 <p:inputText id="inNome" value="#{controladorProfissionais.profissional.nome}"
                              required="true" requiredMessage="Campo obrigatório"/>
                 <p:message for="inNome"/>
-                <h:outputText value="CPF"/>
+                CPF:
                 <p:inputMask mask="999.999.999-99" id="inCpf" value="#{controladorProfissionais.profissional.cpf}"
                              required="true" requiredMessage="Campo obrigatório"/>
                 <p:message for="inCpf"/>
-                <h:outputText value="Registro Medico"/>
+                Registro Medico:
                 <p:inputText id="inRegistroMedico" value="#{controladorProfissionais.profissional.registroMedico}"
                              required="true" requiredMessage="Campo obrigatório"/>
                 <p:message for="inRegistroMedico"/>
 
-                <h:outputText value="Especialização"/>
-                <h:selectOneMenu label="especializacao" value="#{controladorProfissionais.profissional.especializacao}"
+                Especialização:
+                <h:selectOneMenu id="inEspecializacao" label="especializacao" value="#{controladorProfissionais.profissional.especializacao}"
                                  required="true">
                     <f:selectItems value="#{controladorProfissionais.especializacao}" />
-                </h:selectOneMenu>
+                </h:selectOneMenu> <br></br>
 
-                <p:commandButton value="Salvar" action="#{controladorProfissionais.adicionar()}" oncomplete="location.href='visualizaProfissionais.xhtml'"/>
-                <p:commandButton value="Cancelar" oncomplete="location.href='visualizaProfissionais.xhtml'"/>
+                <p:commandButton value="Salvar" update="cadastroProfissional" action="#{controladorProfissionais.adicionar()}" oncomplete="location.href='../profissionais/visualiza.xhtml'"/>
+                <p:commandButton value="Cancelar" oncomplete="location.href='../profissionais/visualiza.xhtml'"/>
             </h:panelGrid>
         </h:form>  
     </h:body>

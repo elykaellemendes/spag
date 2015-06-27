@@ -3,20 +3,62 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
 
-        <h:panelGrid>
+        <f:metadata>
+            <f:viewAction action="#{controladorAgendamentos.consultar}" />
+        </f:metadata>
 
-            <p:editor id="editor" width="600" height="300" value="#{controladorConsultas.consulta.descricao}"
-                      controls="bold italic underline strikethrough subscript superscript
-                      font size style color highlight removeformat bullets numbering outdent
-                      indent alignleft center alignright justify rule undo redo"/>
-        </h:panelGrid>
+        <h:form id="prontuario">
+            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
+            <h:panelGrid columns="3" cellpadding="5">
+
+                Registro:
+                <h:inputText id="inRegistro" value="#{controladorConsultas.consulta.registro}"
+                             required="true" requiredMessage="Campo obrigatório"/>
+                <p:message for="inRegistro"/>
+                Data:
+                <p:calendar id="mask" pattern="dd-MM-yyyy" value="#{controladorConsultas.consulta.dataHora}" />
+                <p:spacer width="20"/>
+                Especialização:
+                <h:selectOneMenu label="especialização" value="#{controladorConsultas.consulta.profissional.especializacao}"
+                                 required="true">
+                    <f:selectItems value="#{controladorProfissionais.especializacao}" />
+                </h:selectOneMenu>
+                Paciente:
+                <h:outputText value="Selecione um Paciente*"/>
+                <p:dataTable id="table" style="width:450px;font-size:small;font-weight:bold" var="item" selectionMode="single"
+                             paginator="true" rows="5" value="#{controladorPacientes.todosPacientes}"
+                             selection="#{controladorConsultas.consulta.paciente}" rowKey="#{item.codigo}">
+
+                    <p:column headerText="Paciente" filterValue="" filterBy="#{item.nome}">
+                        <h:outputText value="#{item.nome}"/>
+                    </p:column>
+
+                    <p:column headerText="Cartão do SUS" filterValue="" filterBy="#{item.cartaoSus}">
+                        <h:outputText value="#{item.cartaoSus}"/>
+                    </p:column>
+
+                </p:dataTable><br/>
+
+
+
+                <p:editor id="editor" width="600" height="300" value="#{controladorConsultas.consulta.descricao}"
+                          controls="bold italic underline strikethrough subscript superscript
+                          font size style color highlight removeformat bullets numbering outdent
+                          indent alignleft center alignright justify rule undo redo"/>
+
+                <p:commandButton value="Salvar" update="prontuario" action="#{controladorConsultas.adicionar()}" oncomplete="location.href='../consultas/agenda.xhtml'"/>
+                <p:commandButton value="Cancelar" oncomplete="location.href='../consultas/agenda.xhtml'"/>
+
+            </h:panelGrid>
+        </h:form>
     </h:body>
 </html>
 
