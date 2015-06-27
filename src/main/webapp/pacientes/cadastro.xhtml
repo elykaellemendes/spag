@@ -14,53 +14,73 @@
 
         <f:metadata>
             <f:viewAction action="#{controladorPacientes.consultar}" />
+            <f:viewAction action="#{controladorPacientes.novo}" />
         </f:metadata>
 
         <h:form id="cadastroPaciente">
-            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
-            <h:panelGrid columns="1" cellpadding="5">
-                Nome:
-                <p:inputText id="inNome" value="#{controladorPacientes.paciente.nome}"
-                             required="true" requiredMessage="Campo obrigatório"/>
-                <p:message for="inNome"/>
-                Sexo:
-                <h:selectOneMenu id="inSexo" label="sexo" value="#{controladorPacientes.paciente.sexo}"
-                                 required="true">
-                    <f:selectItems value="#{controladorPacientes.sexos}" />
-                </h:selectOneMenu>
-                Data de Nascimento:
-                <p:inputMask id="inDataNas" mask="99/99/9999" value="#{controladorPacientes.paciente.dataNascimento}"/>
-                Filiação:
-                <p:inputText id="inFiliacao" value="#{controladorPacientes.paciente.filiacao}"/>
-                Logradouro:
-                <p:inputText id="inLogradouro" value="#{controladorPacientes.paciente.endereco.logradouro}"/>
-                Número:
-                <p:inputText id="inNumero" value="#{controladorPacientes.paciente.endereco.numero}"/>
-                Complemento:
-                <p:inputText id="inComplemento" value="#{controladorPacientes.paciente.endereco.complemento}"/>
-                Bairro:
-                <p:inputText id="inBairro" value="#{controladorPacientes.paciente.endereco.bairro}"/>
-                Cidade:
-                <p:inputText id="inCidade" value="#{controladorPacientes.paciente.endereco.cidade}"/>
-                UF:
-                <p:inputText id="inUf" value="#{controladorPacientes.paciente.endereco.uf}"/>
-                CEP:
-                <p:inputMask id="inCep" mask="99999-999" value="#{controladorPacientes.paciente.endereco.cep}"/>
-                Estado Civil:
-                <h:selectOneMenu id="inEstadoCivil" label="sexo" value="#{controladorPacientes.paciente.estadoCivil}"
-                                 required="true">
-                    <f:selectItems value="#{controladorPacientes.estadosCivil}" />
-                </h:selectOneMenu>
-                Naturalidade:
-                <p:inputText id="inNaturalidade" value="#{controladorPacientes.paciente.naturalidade}"/>
-                Procedência:
-                <p:inputText id="inProcedencia" value="#{controladorPacientes.paciente.procedencia}"/>
-                Cartão SUS:
-                <p:inputText id="inCartaoSus" value="#{controladorPacientes.paciente.cartaoSus}"/>
+            <p:growl id="gro" life="10000" showSummary="true" showDetail="true"/>
+            <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="nome" value="Nome:"/>
+                    <p:inputText id="nome" value="#{controladorPacientes.paciente.nome}" required="true" requiredMessage="Campo obrigatório" size="50"/>
 
-                <p:commandButton value="Salvar" update="cadastroPaciente" action="#{controladorPacientes.adicionar()}" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
-                <p:commandButton value="Cancelar" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
-            </h:panelGrid>
+                    <p:outputLabel for="sexo" value="Sexo:"/>
+                    <p:selectOneMenu id="sexo" label="Sexo" value="#{controladorPacientes.paciente.sexo}" style="width:100%;" required="true">
+                        <f:selectItems value="#{controladorPacientes.sexos}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="dataNascimento" value="Data de nascimento:"/>
+                    <p:inputMask id="dataNascimento" mask="99/99/9999" value="#{controladorPacientes.paciente.dataNascimento}" size="50">
+                        <f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy"/> 
+                    </p:inputMask>
+
+                    <p:outputLabel for="filiacao" value="Filiação:"/>
+                    <p:inputText id="filiacao" value="#{controladorPacientes.paciente.filiacao}" size="50"/>
+
+                    <p:outputLabel for="estadoCivil" value="Estado civil:"/>
+                    <p:selectOneMenu id="estadoCivil" label="sexo" value="#{controladorPacientes.paciente.estadoCivil}" style="width:100%;" required="true">
+                        <f:selectItems value="#{controladorPacientes.estadosCivil}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="naturalidade" value="Naturalidade:"/>
+                    <p:inputText id="naturalidade" value="#{controladorPacientes.paciente.naturalidade}" size="50"/>
+                </h:panelGrid>
+            </p:panel>
+            <p:panel id="panel2" header="Endereço" style="margin-bottom:10px;">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="logradouro" value="Logradouro:"/>
+                    <p:inputText id="logradouro" value="#{controladorPacientes.paciente.endereco.logradouro}" size="50"/>
+
+                    <p:outputLabel for="numero" value="Número:"/>
+                    <p:inputText id="numero" value="#{controladorPacientes.paciente.endereco.numero}" size="50"/>
+
+                    <p:outputLabel for="complemento" value="Complemento:"/>
+                    <p:inputText id="complemento" value="#{controladorPacientes.paciente.endereco.complemento}" size="50"/>
+
+                    <p:outputLabel for="bairro" value="Bairro:"/>
+                    <p:inputText id="bairro" value="#{controladorPacientes.paciente.endereco.bairro}" size="50"/>
+
+                    <p:outputLabel for="cidade" value="Cidade:"/>
+                    <p:inputText id="cidade" value="#{controladorPacientes.paciente.endereco.cidade}" size="50"/>
+
+                    <p:outputLabel for="uf" value="UF:"/>
+                    <p:inputText id="uf" value="#{controladorPacientes.paciente.endereco.uf}" size="50"/>
+
+                    <p:outputLabel for="cep" value="CEP:"/>
+                    <p:inputMask id="cep" mask="99999-999" value="#{controladorPacientes.paciente.endereco.cep}" size="50"/>
+                </h:panelGrid>
+            </p:panel>
+            <p:panel id="panel3" header="Saúde" style="margin-bottom:10px;">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="procedencia" value="Procedência:"/>
+                    <p:inputText id="procedencia" value="#{controladorPacientes.paciente.procedencia}" size="50"/>
+
+                    <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
+                    <p:inputText id="cartaoSUS" value="#{controladorPacientes.paciente.cartaoSus}" size="50"/>
+                </h:panelGrid>
+            </p:panel>
+            <p:commandButton value="Salvar" update="cadastroPaciente" action="#{controladorPacientes.adicionar}" oncomplete="location.href='/spag/pacientes/visualiza.xhtml'"/>
+            <p:commandButton value="Cancelar" oncomplete="location.href='/spag/pacientes/visualiza.xhtml'"/>
         </h:form>
     </h:body>
 </html>
