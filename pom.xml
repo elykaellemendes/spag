@@ -55,7 +55,7 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Dependência para a utilização do JSF -->
+        <!-- Mojarra (implementacao do JSF) -->
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.faces</artifactId>
