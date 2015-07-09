@@ -30,9 +30,8 @@ public class ControladorPacientes implements Serializable {
 
     @Inject
     private Pacientes pacientes;
-    
-    private Paciente paciente;
 
+    private Paciente paciente;
     private List<Paciente> todosPacientes;
 
     public void consultar() {
@@ -48,6 +47,7 @@ public class ControladorPacientes implements Serializable {
         consultar();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Paciente cadastrado com sucesso!"));
     }
+
     public void alterar() {
         pacientes.alterar(paciente);
     }
