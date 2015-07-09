@@ -11,6 +11,8 @@ import br.org.apaebrasil.spag.dominio.Profissional;
 import br.org.apaebrasil.spag.dominio.repositorio.Agendamentos;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+import javax.persistence.Query;
 
 /**
  *
@@ -20,7 +22,12 @@ public class AgendamentosHibernate extends RepositorioHibernate<Agendamento, Int
 
     @Override
     public List<Agendamento> porDataHora(Date dataHora) {
-        return manager.createQuery("from Agendamento a where a.dataHora = :dataHora").getResultList();
+        Objects.requireNonNull(dataHora, "data ou hora inválida");
+
+        Query query = manager.createQuery("FROM Agendamento a WHERE a.dataHora = :dataHora");
+        query.setParameter("dataHora", dataHora);
+
+        return query.getResultList();
     }
 
     @Override
