@@ -78,4 +78,9 @@ public class Agendamento implements Serializable {
     public void setEspecializacao(Especializacao especializacao) {
         this.especializacao = especializacao;
     }
+
+    @Override
+    public String toString() {
+        return "Agendamento{" + "codigo=" + codigo + ", dataHora=" + dataHora + ", paciente=" + paciente + ", especializacao=" + especializacao + '}';
+    }
 }
