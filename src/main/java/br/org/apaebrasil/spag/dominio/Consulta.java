@@ -10,7 +10,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,14 +29,17 @@ public class Consulta implements Serializable {
     private String registro;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @JoinColumn(nullable = false)
     private Date dataHora;
 
     private String unidade;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "paciente", nullable = false)
     private Paciente paciente;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "profissional", nullable = false)
     private Profissional profissional;
 
     private String descricao;
