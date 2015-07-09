@@ -74,4 +74,11 @@ public class ControladorAgendamentos implements Serializable {
         return todosAgendamentos;
     }
 
+    public List<Paciente> getPacientes() {
+        return pacientes.recuperarTodos();
+    }
+
+    public List<Paciente> pacientesPorNome(String nome) {
+        return pacientes.porNome(nome);
+    }
 }
