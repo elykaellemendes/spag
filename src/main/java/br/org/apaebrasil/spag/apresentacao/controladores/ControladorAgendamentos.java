@@ -62,18 +62,6 @@ public class ControladorAgendamentos implements Serializable {
         agendamentos.remover(Integer.SIZE);
     }
 
-    public Agendamento porDataHora(Date dataHora) {
-        return (Agendamento) agendamentos.porDataHora(dataHora);
-    }
-
-    public Agendamento porPaciente(Paciente nome) {
-        return (Agendamento) agendamentos.porPaciente(nome);
-    }
-
-    public Agendamento porEspecializacao(Profissional especializacao) {
-        return (Agendamento) agendamentos.porEspecializacao(especializacao);
-    }
-
     public Agendamento getAgendamento() {
         return agendamento;
     }
