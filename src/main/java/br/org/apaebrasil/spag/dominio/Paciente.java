@@ -148,6 +148,6 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "Paciente{" + "codigo=" + codigo + ", nome=" + nome + ", sexo=" + sexo + ", dataNascimento=" + dataNascimento + ", filiacao=" + filiacao + ", endereco=" + endereco + ", estadoCivil=" + estadoCivil + ", naturalidade=" + naturalidade + ", procedencia=" + procedencia + ", cartaoSus=" + cartaoSus + '}';
+        return nome + " " + cartaoSus;
     }
 }
