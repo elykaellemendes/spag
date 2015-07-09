@@ -1,24 +1,92 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Agenda</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>SPAG</title>
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
-<!--        <h:form id="atualcampus" >
 
-            <h:panelGrid columns="3" cellpadding="5" style="margin-top:1%; text-align: left">
+        <h:form>
+            <p:growl id="messages" showDetail="true" />
 
-                <h:outputText value="Campus"/>
-                <p:inputText id="innome" value="#{controladorAgendamentos.todosAgendamentos}" size="50"
-                             required="true" requiredMessage="Nome Obrigatório"/>
-                <p:message for="innome"/>
-            </h:panelGrid>
-        </h:form>-->
+            <p:panelGrid columnClasses="value" styleClass="ui-noborder">
+                <h1 style="margin-top: 0">Agenda</h1>
+                <p:schedule id="agenda"
+                            value="#{controladorAgenda.eventModel}"
+                            widgetVar="myschedule"
+                            timeZone="GMT-3"
+                            locale="pt">
+                    <p:ajax event="dateSelect"
+                            listener="#{controladorAgenda.onDateSelect}"
+                            update="eventDetails"
+                            oncomplete="PF('eventDialog').show();" />
+                    <p:ajax event="eventSelect"
+                            listener="#{controladorAgenda.onEventSelect}"
+                            update="eventDetails"
+                            oncomplete="PF('eventDialog').show();" />
+                    <p:ajax event="eventMove"
+                            listener="#{controladorAgenda.onEventMove}"
+                            update="messages" />
+                    <p:ajax event="eventResize"
+                            listener="#{controladorAgenda.onEventResize}"
+                            update="messages" />
+                </p:schedule>
+            </p:panelGrid>
+            <p:dialog widgetVar="eventDialog" header="Agendamento">
+                <p:panelGrid id="eventDetails" columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="paciente" value="Paciente:" />
+                    <p:inputText id="paciente" value="#{controladorAgenda.event.title}" required="true" />
+
+                    <p:outputLabel for="dataHora" value="Data e Hora" />
+                    <p:inputMask id="dataHora" value="#{controladorAgenda.event.endDate}" mask="99/99/9999">
+                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                    </p:inputMask>
+                    
+                    <p:commandButton type="reset" value="Limpa" />
+                    <p:commandButton id="addButton"
+                                     value="Salva"
+                                     actionListener="#{controladorAgenda.addEvent}"
+                                     oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
+                </p:panelGrid>
+            </p:dialog>    
+        </h:form>
+
+        <script type="text/javascript">
+            PrimeFaces.locales['pt'] = {
+                closeText: 'fechar',
+                prevText: 'anterior',
+                nextText: 'próximo',
+                currentText: 'hoje',
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+                    'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+                weekHeader: 'Sem',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText: 'Dia Inteiro'
+            };
+        </script>
+        <style type="text/css">
+            .value {
+                width: 1000px;
+            }
+        </style>
     </h:body>
 </html>
-
