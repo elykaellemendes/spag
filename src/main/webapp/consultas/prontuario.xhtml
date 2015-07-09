@@ -1,64 +1,109 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>SPAG</title>
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
 
         <f:metadata>
-            <f:viewAction action="#{controladorAgendamentos.consultar}" />
+            <f:viewAction action="#{controladorConsultas.novo}" />
         </f:metadata>
 
-        <h:form id="prontuario">
-            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
-            <h:panelGrid columns="3" cellpadding="5">
+        <h:form id="prontuarioPaciente">
+            <p:messages showSummary="true" autoUpdate="true"/>
 
-                Registro:
-                <h:inputText id="inRegistro" value="#{controladorConsultas.consulta.registro}"
-                             required="true" requiredMessage="Campo obrigatório"/>
-                <p:message for="inRegistro"/>
-                Data:
-                <p:calendar id="mask" pattern="dd-MM-yyyy" value="#{controladorConsultas.consulta.dataHora}" />
-                <p:spacer width="20"/>
-                Especialização:
-                <h:selectOneMenu label="especialização" value="#{controladorConsultas.consulta.profissional.especializacao}"
-                                 required="true">
-                    <f:selectItems value="#{controladorProfissionais.especializacao}" />
-                </h:selectOneMenu>
-                Paciente:
-                <h:outputText value="Selecione um Paciente*"/>
-                <p:dataTable id="table" style="width:450px;font-size:small;font-weight:bold" var="item" selectionMode="single"
-                             paginator="true" rows="5" value="#{controladorPacientes.todosPacientes}"
-                             selection="#{controladorConsultas.consulta.paciente}" rowKey="#{item.codigo}">
+            <p:panel id="panel1" header="Paciente" style="margin-bottom:10px;">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="nome" value="Nome:"/>
+                    <p:autoComplete id="nome"
+                                    value="#{controladorConsultas.consulta.paciente}"
+                                    completeMethod="#{controladorConsultas.pacientesPorNome}"
+                                    var="paciente"
+                                    itemLabel="#{paciente.nome}"
+                                    itemValue="#{paciente}"
+                                    converter="#{pacienteConverter}"
+                                    forceSelection="true"
+                                    size="60"
+                                    required="true">
+                        <p:column>
+                            <h:outputText value="#{paciente.cartaoSus}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{paciente.nome}" />
+                        </p:column>
+                        <p:ajax event="itemSelect"
+                                listener="#{controladorConsultas.onItemSelect}"
+                                update=":prontuarioPaciente" />
+                    </p:autoComplete>
 
-                    <p:column headerText="Paciente" filterValue="" filterBy="#{item.nome}">
-                        <h:outputText value="#{item.nome}"/>
-                    </p:column>
+                    <p:outputLabel for="cartaoSus" value="Cartão SUS: " />
+                    <h:outputText id="cartaoSus" value="#{controladorConsultas.consulta.paciente.cartaoSus}" />  
 
-                    <p:column headerText="Cartão do SUS" filterValue="" filterBy="#{item.cartaoSus}">
-                        <h:outputText value="#{item.cartaoSus}"/>
-                    </p:column>
+                    <p:outputLabel for="dataNascimento" value="Data de nascimento: " />
+                    <h:outputText id="dataNascimento" value="#{controladorConsultas.consulta.paciente.dataNascimento}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </p:panelGrid>
+            </p:panel>
+            <ui:repeat var="consulta" varStatus="status" value="#{controladorConsultas.consultasPorPaciente}">
+                <p:panel id="panel2" header="Consulta Nº #{status.index + 1}" style="margin-bottom:10px;">
+                    <p:panelGrid columns="2" styleClass="ui-noborder">
+                        <p:outputLabel for="dataHora" value="Data e Hora: " />
+                        <h:outputText id="dataHora" value="#{consulta.dataHora}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                        </h:outputText>
 
-                </p:dataTable><br/>
+                        <p:outputLabel for="profissional" value="Profissional: " />
+                        <h:outputText id="profissional" value="#{consulta.profissional}" />
 
+                        <p:outputLabel for="especializacao" value="Especialização: " />
+                        <h:outputText id="especializacao" value="#{consulta.profissional.especializacao}" />
 
+                        <p:outputLabel for="unidade2" value="Unidade: " />
+                        <h:outputText id="unidade2" value="#{consulta.unidade}" />
 
-                <p:editor id="editor" width="600" height="300" value="#{controladorConsultas.consulta.descricao}"
-                          controls="bold italic underline strikethrough subscript superscript
-                          font size style color highlight removeformat bullets numbering outdent
-                          indent alignleft center alignright justify rule undo redo"/>
+                        <p:outputLabel for="descricao2" value="Descrição: " />
+                        <h:outputText id="descricao2" value="#{consulta.descricao}" />
+                    </p:panelGrid>
+                </p:panel>
+            </ui:repeat>
 
-                <p:commandButton value="Salvar" update="prontuario" action="#{controladorConsultas.adicionar()}" oncomplete="location.href='../consultas/agenda.xhtml'"/>
-                <p:commandButton value="Cancelar" oncomplete="location.href='../consultas/agenda.xhtml'"/>
+            <p:commandButton value="Nova Consulta" onclick="PF('widgetNovaConsultaDialog').show();" />
 
-            </h:panelGrid>
+            <p:dialog id="novaConsultaDialog"
+                      widgetVar="widgetNovaConsultaDialog"
+                      header="Nova Consulta"
+                      closable="true"
+                      closeOnEscape="true">
+                <p:panelGrid id="panelNovaConsultaDialog" columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="unidade" value="Unidade: " />
+                    <p:inputText id="unidade" value="#{controladorConsultas.consulta.unidade}" size="50"/>
+
+                    <p:outputLabel for="descricao" value="Descrição: " />
+                    <p:inputTextarea id="descricao"
+                                     value="#{controladorConsultas.consulta.descricao}"
+                                     rows="5"
+                                     cols="50"
+                                     autoResize="false" />
+                    
+                    <p:commandButton type="reset" value="Limpa" />
+                    <p:commandButton value="Adiciona"
+                                     action="#{controladorConsultas.adicionar}"
+                                     update=":prontuarioPaciente"
+                                     oncomplete="PF('widgetNovaConsultaDialog').hide();">
+                        <p:resetInput target=":prontuarioPaciente:novaConsultaDialog" />
+                    </p:commandButton>
+                </p:panelGrid>
+            </p:dialog>
         </h:form>
     </h:body>
 </html>
-
