@@ -6,7 +6,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>SPAG:Visualização de Pacientes</title>
+        <meta charset="UTF-8"/>
+        <title>SPAG</title>
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
@@ -15,77 +16,34 @@
             <f:viewAction action="#{controladorPacientes.consultar}" />
         </f:metadata>
 
-        <h:form id="visualizaPacientes">
-            <p:fieldset>
-                <div class="centro">
-                    <p:dataTable id="tabelaforn" value="#{controladorPacientes.todosPacientes}" var="paciente" 
-                                 rowKey="#{paciente.codigo}" paginator="true" rows="10">
-                        
-                        <p:column headerText="Nome" filterValue="" filterBy="#{paciente.nome}">
-                            <h:outputText value="#{paciente.nome}"/>
-                        </p:column>
-                        <p:column headerText="Cartão do SUS" filterValue="" filterBy="#{paciente.cartaoSus}">
-                            <h:outputText value="#{paciente.cartaoSus}"/>
-                        </p:column>
-                        <p:column headerText="Cidade" filterValue="" filterBy="#{paciente.endereco.cidade}">
-                            <h:outputText value="#{paciente.endereco.cidade}"/>
-                        </p:column>
+        <h1>Lista de Pacientes</h1>
 
-                        <p:column style="width:32px;text-align: center">
-                            <p:commandButton oncomplete="location.href='../pacientes/altera.xhtml'" icon="ui-icon-pencil" title="Atualizar"/>
-                        </p:column>
+        <h:form id="frm">
+            <p:messages showDetail="true" showSummary="true" autoUpdate="true" />
 
-                        <p:column style="width:32px;text-align: center">
-                            <p:commandButton update=":visualizaPacientes:dialogo" oncomplete="PF('painel').show()" title="Ver" icon="ui-icon ui-icon-search">
-                                <f:setPropertyActionListener value="#{paciente}" target="#{controladorPacientes.paciente}"/>
-                            </p:commandButton>
-                        </p:column>
-                    </p:dataTable>
+            <p:dataTable id="tabela" value="#{controladorPacientes.todosPacientes}" var="paciente" 
+                         rowKey="#{paciente.codigo}" paginator="true" rows="10" paginatorPosition="bottom">
+                <p:column headerText="Nome" sortBy="#{paciente.nome}">
+                    <p:commandLink actionListener="#{controladorPacientes.detalhe(paciente)}">
+                        <h:outputText value="#{paciente.nome}"/>
+                    </p:commandLink>
+                </p:column>
 
-                </div>
-            </p:fieldset>
-            <p:dialog id="dialogo" closable="false" resizable="false"
-                      modal="true" visible="false" widgetVar="painel">
+                <p:column headerText="Cartão do SUS" sortBy="#{paciente.cartaoSus}">
+                    <h:outputText value="#{paciente.cartaoSus}"/>
+                </p:column>
 
-                <f:facet name="header">
-                    Resultado
-                </f:facet>
-
-                <h:panelGrid columns="2">
-                    Nome:
-                    <h:outputText value="#{controladorPacientes.paciente.nome}"/>
-                    Sexo:
-                    <h:outputText value="#{controladorPacientes.paciente.sexo}"/>
-                    Data de Nascimento:
-                    <h:outputText value="#{controladorPacientes.paciente.dataNascimento}"/>
-                    Filiação:
-                    <h:outputText value="#{controladorPacientes.paciente.filiacao}"/>
-                    Logradouro:
-                    <h:outputText value="#{controladorPacientes.paciente.endereco.logradouro}"/>
-                    Número:
-                    <h:outputText value="#{controladorPacientes.paciente.endereco.numero}"/>
-                    Complemento:
-                    <h:outputText value="#{controladorPacientes.paciente.endereco.complemento}"/>
-                    Bairro:
-                    <h:outputText value="#{controladorPacientes.paciente.endereco.bairro}"/>
-                    Cidade:
-                    <h:outputText value="#{controladorPacientes.paciente.endereco.cidade}"/>
-                    UF:
-                    <h:outputText value="#{controladorPacientes.paciente.endereco.uf}"/>
-                    CEP:
-                    <h:outputText value="#{controladorPacientes.paciente.endereco.cep}"/>
-                    Estado Civil:
-                    <h:outputText value="#{controladorPacientes.paciente.estadoCivil}"/>
-                    Naturalidade:
-                    <h:outputText value="#{controladorPacientes.paciente.naturalidade}"/>
-                    Procedência:
-                    <h:outputText value="#{controladorPacientes.paciente.procedencia}"/>
-                    Cartão SUS:
-                    <h:outputText value="#{controladorPacientes.paciente.cartaoSus}"/>
-
-                </h:panelGrid>
-                <p:commandButton value="Fechar" oncomplete="location.href='../pacientes/visualiza.xhtml'" ajax="false"/>
-            </p:dialog>
+                <p:column headerText="Cidade" sortBy="#{paciente.endereco.cidade}">
+                    <h:outputText value="#{paciente.endereco.cidade}"/>
+                </p:column>
+                <p:column width="40" style="text-align: center">
+                    <h:panelGroup style="white-space: nowrap">
+                        <p:button icon="ui-icon-pencil" title="Editar" outcome="/pacientes/altera">
+                            <f:param name="codigo" value="#{paciente.codigo}" />
+                        </p:button>
+                    </h:panelGroup>
+                </p:column>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>
