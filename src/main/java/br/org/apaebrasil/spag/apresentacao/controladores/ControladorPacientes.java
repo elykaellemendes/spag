@@ -56,14 +56,6 @@ public class ControladorPacientes implements Serializable {
         return paciente;
     }
 
-    public Pacientes getPacientes() {
-        return pacientes;
-    }
-
-    public void setPacientes(Pacientes pacientes) {
-        this.pacientes = pacientes;
-    }
-
     public List<Paciente> getTodosPacientes() {
         return todosPacientes;
     }
