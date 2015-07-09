@@ -9,6 +9,8 @@ import br.org.apaebrasil.spag.dominio.Agendamento;
 import br.org.apaebrasil.spag.dominio.Paciente;
 import br.org.apaebrasil.spag.dominio.Profissional;
 import br.org.apaebrasil.spag.dominio.repositorio.Agendamentos;
+import br.org.apaebrasil.spag.dominio.repositorio.Pacientes;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -31,8 +33,10 @@ public class ControladorAgendamentos implements Serializable {
     @Inject
     private Agendamentos agendamentos;
 
-    private Agendamento agendamento;
+    @Inject
+    private Pacientes pacientes;
 
+    private Agendamento agendamento;
     private List<Agendamento> todosAgendamentos;
 
     public void consultar() {
