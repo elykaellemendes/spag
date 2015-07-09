@@ -6,46 +6,63 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Agendamento</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>SPAG</title>
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
-        
-         <f:metadata>
-             <f:viewAction action="#{controladorAgendamentos.consultar}" />
+
+        <f:metadata>
+            <f:viewAction action="#{controladorAgendamentos.consultar}" />
+            <f:viewAction action="#{controladorAgendamentos.novo}" />
         </f:metadata>
 
         <h:form id="agendamento">
-            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
-            <h:panelGrid columns="3" cellpadding="5">
-                Data: 
-                <p:calendar id="mask" pattern="dd-MM-yyyy" value="#{agendamento.dataHora}" />
-                <p:spacer width="20"/><br></br>
-                Especialização:
-                <h:selectOneMenu label="especialização" value="#{agendamento.especializacao}"
-                                 required="true">
-                    <f:selectItems value="#{controladorProfissionais.especializacao}" />
-                </h:selectOneMenu><br></br>
-                
-                <h:outputText value="Selecione um Paciente*"/>
-                <p:dataTable id="table" style="width:600px;font-size:small;font-weight:bold" var="item" selectionMode="single"
-                                     scrollable="true" scrollHeight="113" scrollRows="20" liveScroll="true"
-                                     value="#{controladorPacientes.todosPacientes}"
-                                     selection="#{controladorPacientes.consultar()}" rowKey="#{item.codigo}">
+            <p:messages showSummary="true" autoUpdate="true"/>
+            
+            <p:panel id="panel1" header="Agendamento" style="margin-bottom:10px;">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="dataHora" value="Data e Hora:"/>
+                    <p:calendar id="dataHora"
+                                locale="pt_BR" pattern="dd/MM/yyyy HH:mm"
+                                value="#{controladorAgendamentos.agendamento.dataHora}"
+                                required="true"/>
 
-                            <p:column headerText="Nome">
-                                <h:outputText value="#{item.nome}" />
-                            </p:column>
-
-                            <p:column filterValue="Cartão do SUS" filterBy="#{item.cartaoSus}">
-                                <h:outputText value="#{item.cartaoSus}" />
-                            </p:column>
-
-                        </p:dataTable><br></br>
-
-                <p:commandButton value="Salvar" update="agendamento" action="#{controladorAgendamentos.adicionar()}" oncomplete="location.href='../consultas/agenda.xhtml'"/>
-                <p:commandButton value="Cancelar" oncomplete="location.href='../consultas/agenda.xhtml'"/>
-            </h:panelGrid>
+                    <p:outputLabel for="especializacao" value="Especialização:"/>
+                    <p:selectOneMenu id="especializacao"
+                                     value="#{controladorAgendamentos.agendamento.especializacao}"
+                                     required="true">
+                        <f:selectItems value="#{controladorProfissionais.especializacao}" />
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel for="paciente" value="Paciente: "/>
+                    <p:autoComplete id="paciente"
+                                    value="#{controladorAgendamentos.agendamento.paciente}"
+                                    completeMethod="#{controladorAgendamentos.pacientesPorNome}"
+                                    var="paciente"
+                                    itemLabel="#{paciente.nome}"
+                                    itemValue="#{paciente}"
+                                    converter="#{pacienteConverter}"
+                                    forceSelection="true"
+                                    size="60"
+                                    required="true">
+                        <p:column>
+                            <h:outputText value="#{paciente.cartaoSus}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{paciente.nome}" />
+                        </p:column>
+                    </p:autoComplete>
+                </p:panelGrid>
+            </p:panel>
+            <p:commandButton value="Salvar"
+                             update="agendamento"
+                             action="#{controladorAgendamentos.adicionar}"
+                             oncomplete="location.href='../consultas/agenda.xhtml'"/>
+            <p:commandButton value="Cancelar"
+                             oncomplete="location.href='../consultas/agenda.xhtml'"/>
         </h:form>
     </h:body>
 </html>
