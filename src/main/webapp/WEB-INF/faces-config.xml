@@ -9,6 +9,8 @@
         <locale-config>
             <default-locale>pt_BR</default-locale>
         </locale-config>
+        <message-bundle>
+            br.org.apaebrasil.spag.resources.Messages
+        </message-bundle>
     </application>
-
 </faces-config>
