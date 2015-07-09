@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuração necessária para ativar o suporte ao CDI -->
 <Context antiJARLocking="true" path="/spag">
     <Resource
         name="BeanManager"
