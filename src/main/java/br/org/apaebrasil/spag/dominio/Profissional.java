@@ -94,4 +94,9 @@ public class Profissional implements Serializable {
     public void setEspecializacao(Especializacao especializacao) {
         this.especializacao = especializacao;
     }
+    
+    @Override
+    public String toString() {
+        return nome + " (CRM: " + registroMedico + ")";
+    }
 }
