@@ -7,25 +7,32 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <meta charset="UTF-8"/>
-        <title>SPAG:Cadastro de Pacientes</title>
+        <title>SPAG</title>
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
 
         <f:metadata>
-            <f:viewAction action="#{controladorPacientes.consultar}" />
             <f:viewAction action="#{controladorPacientes.novo}" />
         </f:metadata>
 
         <h:form id="cadastroPaciente">
-            <p:growl id="gro" life="10000" showSummary="true" showDetail="true"/>
+            <p:messages  showDetail="true" showSummary="true" autoUpdate="true"/>
+            
             <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
-                <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
                     <p:outputLabel for="nome" value="Nome:"/>
-                    <p:inputText id="nome" value="#{controladorPacientes.paciente.nome}" required="true" requiredMessage="Campo obrigatório" size="50"/>
+                    <p:inputText id="nome"
+                                 value="#{controladorPacientes.paciente.nome}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="50"/>
 
                     <p:outputLabel for="sexo" value="Sexo:"/>
-                    <p:selectOneMenu id="sexo" label="Sexo" value="#{controladorPacientes.paciente.sexo}" style="width:100%;" required="true">
+                    <p:selectOneMenu id="sexo" label="Sexo"
+                                     value="#{controladorPacientes.paciente.sexo}"
+                                     style="width:100%;"
+                                     required="true">
                         <f:selectItems value="#{controladorPacientes.sexos}" />
                     </p:selectOneMenu>
 
@@ -34,20 +41,24 @@
                         <f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy"/> 
                     </p:inputMask>
 
-                    <p:outputLabel for="filiacao" value="Filiação:"/>
+                    <p:outputLabel for="filiacao" value="Filiação(Mãe):"/>
                     <p:inputText id="filiacao" value="#{controladorPacientes.paciente.filiacao}" size="50"/>
 
                     <p:outputLabel for="estadoCivil" value="Estado civil:"/>
-                    <p:selectOneMenu id="estadoCivil" label="sexo" value="#{controladorPacientes.paciente.estadoCivil}" style="width:100%;" required="true">
+                    <p:selectOneMenu id="estadoCivil"
+                                     label="Estado Civil"
+                                     value="#{controladorPacientes.paciente.estadoCivil}"
+                                     style="width:100%;"
+                                     required="true">
                         <f:selectItems value="#{controladorPacientes.estadosCivil}" />
                     </p:selectOneMenu>
 
                     <p:outputLabel for="naturalidade" value="Naturalidade:"/>
                     <p:inputText id="naturalidade" value="#{controladorPacientes.paciente.naturalidade}" size="50"/>
-                </h:panelGrid>
+                </p:panelGrid>
             </p:panel>
             <p:panel id="panel2" header="Endereço" style="margin-bottom:10px;">
-                <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
                     <p:outputLabel for="logradouro" value="Logradouro:"/>
                     <p:inputText id="logradouro" value="#{controladorPacientes.paciente.endereco.logradouro}" size="50"/>
 
@@ -68,19 +79,23 @@
 
                     <p:outputLabel for="cep" value="CEP:"/>
                     <p:inputMask id="cep" mask="99999-999" value="#{controladorPacientes.paciente.endereco.cep}" size="50"/>
-                </h:panelGrid>
+                </p:panelGrid>
             </p:panel>
             <p:panel id="panel3" header="Saúde" style="margin-bottom:10px;">
-                <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
                     <p:outputLabel for="procedencia" value="Procedência:"/>
                     <p:inputText id="procedencia" value="#{controladorPacientes.paciente.procedencia}" size="50"/>
 
                     <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
                     <p:inputText id="cartaoSUS" value="#{controladorPacientes.paciente.cartaoSus}" size="50"/>
-                </h:panelGrid>
+                </p:panelGrid>
             </p:panel>
-            <p:commandButton value="Salvar" update="cadastroPaciente" action="#{controladorPacientes.adicionar}" oncomplete="location.href='/spag/pacientes/visualiza.xhtml'"/>
-            <p:commandButton value="Cancelar" oncomplete="location.href='/spag/pacientes/visualiza.xhtml'"/>
+            <p:commandButton value="Salvar"
+                             update="cadastroPaciente"
+                             action="#{controladorPacientes.adicionar}"
+                             oncomplete="location.href='/spag/pacientes/visualiza.xhtml'"/>
+            <p:commandButton value="Cancelar"
+                             oncomplete="location.href='/spag/pacientes/visualiza.xhtml'"/>
         </h:form>
     </h:body>
 </html>
