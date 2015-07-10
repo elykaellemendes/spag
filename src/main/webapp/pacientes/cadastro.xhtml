@@ -39,12 +39,17 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel for="dataNascimento" value="Data de nascimento:"/>
-                    <p:inputMask id="dataNascimento" mask="99/99/9999" value="#{controladorPacientes.paciente.dataNascimento}" size="50">
+                    <p:inputMask id="dataNascimento"
+                                 mask="99/99/9999"
+                                 value="#{controladorPacientes.paciente.dataNascimento}"
+                                 size="50">
                         <f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy"/> 
                     </p:inputMask>
 
                     <p:outputLabel for="filiacao" value="Filiação(Mãe):"/>
-                    <p:inputText id="filiacao" value="#{controladorPacientes.paciente.filiacao}" size="50"/>
+                    <p:inputText id="filiacao"
+                                 value="#{controladorPacientes.paciente.filiacao}"
+                                 size="50"/>
 
                     <p:outputLabel for="estadoCivil" value="Estado civil:"/>
                     <p:selectOneMenu id="estadoCivil"
@@ -56,40 +61,61 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel for="naturalidade" value="Naturalidade:"/>
-                    <p:inputText id="naturalidade" value="#{controladorPacientes.paciente.naturalidade}" size="50"/>
+                    <p:inputText id="naturalidade"
+                                 value="#{controladorPacientes.paciente.naturalidade}"
+                                 size="50"/>
                 </p:panelGrid>
             </p:panel>
             <p:panel id="panel2" header="Endereço" style="margin-bottom:10px;">
                 <p:panelGrid columns="2" styleClass="ui-noborder">
                     <p:outputLabel for="logradouro" value="Logradouro:"/>
-                    <p:inputText id="logradouro" value="#{controladorPacientes.paciente.endereco.logradouro}" size="50"/>
+                    <p:inputText id="logradouro"
+                                 value="#{controladorPacientes.paciente.endereco.logradouro}"
+                                 size="50"/>
 
                     <p:outputLabel for="numero" value="Número:"/>
-                    <p:inputText id="numero" value="#{controladorPacientes.paciente.endereco.numero}" size="50"/>
+                    <p:inputText id="numero"
+                                 value="#{controladorPacientes.paciente.endereco.numero}"
+                                 size="50"/>
 
                     <p:outputLabel for="complemento" value="Complemento:"/>
-                    <p:inputText id="complemento" value="#{controladorPacientes.paciente.endereco.complemento}" size="50"/>
+                    <p:inputText id="complemento"
+                                 value="#{controladorPacientes.paciente.endereco.complemento}"
+                                 size="50"/>
 
                     <p:outputLabel for="bairro" value="Bairro:"/>
-                    <p:inputText id="bairro" value="#{controladorPacientes.paciente.endereco.bairro}" size="50"/>
+                    <p:inputText id="bairro"
+                                 value="#{controladorPacientes.paciente.endereco.bairro}"
+                                 size="50"/>
 
                     <p:outputLabel for="cidade" value="Cidade:"/>
-                    <p:inputText id="cidade" value="#{controladorPacientes.paciente.endereco.cidade}" size="50"/>
+                    <p:inputText id="cidade"
+                                 value="#{controladorPacientes.paciente.endereco.cidade}"
+                                 size="50"/>
 
                     <p:outputLabel for="uf" value="UF:"/>
-                    <p:inputText id="uf" value="#{controladorPacientes.paciente.endereco.uf}" size="50"/>
+                    <p:inputText id="uf"
+                                 value="#{controladorPacientes.paciente.endereco.uf}"
+                                 size="50"/>
 
                     <p:outputLabel for="cep" value="CEP:"/>
-                    <p:inputMask id="cep" mask="99999-999" value="#{controladorPacientes.paciente.endereco.cep}" size="50"/>
+                    <p:inputMask id="cep"
+                                 mask="99999-999"
+                                 value="#{controladorPacientes.paciente.endereco.cep}"
+                                 size="50"/>
                 </p:panelGrid>
             </p:panel>
             <p:panel id="panel3" header="Saúde" style="margin-bottom:10px;">
                 <p:panelGrid columns="2" styleClass="ui-noborder">
                     <p:outputLabel for="procedencia" value="Procedência:"/>
-                    <p:inputText id="procedencia" value="#{controladorPacientes.paciente.procedencia}" size="50"/>
+                    <p:inputText id="procedencia"
+                                 value="#{controladorPacientes.paciente.procedencia}"
+                                 size="50"/>
 
                     <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
-                    <p:inputText id="cartaoSUS" value="#{controladorPacientes.paciente.cartaoSus}" size="50"/>
+                    <p:inputText id="cartaoSUS"
+                                 value="#{controladorPacientes.paciente.cartaoSus}"
+                                 size="50"/>
                 </p:panelGrid>
             </p:panel>
             <p:commandButton value="Salvar"
