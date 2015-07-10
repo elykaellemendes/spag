@@ -13,31 +13,55 @@
             <p:menuitem value="Início" icon="ui-icon-home" outcome="/inicio"/>
 
             <p:submenu label="Pacientes">
-                <p:menuitem value="Prontuário" icon="ui-icon-search" outcome="/pacientes/prontuario"/>
-                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" outcome="/pacientes/cadastro" />
-                <p:menuitem value="Visualizar" icon="ui-icon-search" outcome="/pacientes/visualiza" />
+                <p:menuitem value="Prontuário"
+                            icon="ui-icon-search"
+                            outcome="/pacientes/prontuario"/>
+                <p:menuitem value="Adicionar"
+                            icon="ui-icon-circle-plus"
+                            outcome="/pacientes/cadastro" />
+                <p:menuitem value="Visualizar"
+                            icon="ui-icon-search"
+                            outcome="/pacientes/visualiza" />
             </p:submenu>
 
             <p:submenu label="Profissionais">
-                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" outcome="/profissionais/cadastro"/>
-                <p:menuitem value="Visualizar" icon="ui-icon-search" outcome="/profissionais/visualiza"/>
+                <p:menuitem value="Adicionar"
+                            icon="ui-icon-circle-plus"
+                            outcome="/profissionais/cadastro"/>
+                <p:menuitem value="Visualizar"
+                            icon="ui-icon-search"
+                            outcome="/profissionais/visualiza"/>
             </p:submenu>
 
             <p:submenu label="Funcionários">
-                <p:menuitem value="Adicionar" icon="ui-icon-circle-plus" outcome="/funcionarios/cadastro"/>
-                <p:menuitem value="Visualizar" icon="ui-icon-search" outcome="/funcionarios/visualiza"/>
+                <p:menuitem value="Adicionar"
+                            icon="ui-icon-circle-plus"
+                            outcome="/funcionarios/cadastro"/>
+                <p:menuitem value="Visualizar"
+                            icon="ui-icon-search"
+                            outcome="/funcionarios/visualiza"/>
             </p:submenu>
 
             <p:submenu label="Consultas">
-                <p:menuitem value="Agendamento" icon="ui-icon-circle-plus" outcome="/consultas/agendamentos"/>
-                <p:menuitem value="Agenda" icon="ui-icon-search" outcome="/consultas/agenda"/>
+                <p:menuitem value="Agenda"
+                            icon="ui-icon-search"
+                            outcome="/consultas/agenda"/>
+                <p:menuitem value="Agendamento"
+                            icon="ui-icon-circle-plus"
+                            outcome="/consultas/agendamentos"/>
             </p:submenu>
 
             <p:submenu label="Ajuda" >
-                <p:menuitem value="Sobre" icon="" update="menu" url=""/>
+                <p:menuitem value="Sobre"
+                            icon=""
+                            update="menu"
+                            url=""/>
             </p:submenu>
 
-            <p:menuitem icon="ui-icon-power" value="Sair" action="#{controleLogin.sair()}" oncomplete="location.href='Login.xhtml'"/>
+            <p:menuitem value="Sair"
+                        icon="ui-icon-power"
+                        action="#{controleLogin.sair()}"
+                        oncomplete="location.href='Login.xhtml'"/>
         </p:menubar>
     </h:form>
     <p />
