@@ -7,12 +7,9 @@ package br.org.apaebrasil.spag.apresentacao.controladores;
 
 import br.org.apaebrasil.spag.dominio.Agendamento;
 import br.org.apaebrasil.spag.dominio.Paciente;
-import br.org.apaebrasil.spag.dominio.Profissional;
 import br.org.apaebrasil.spag.dominio.repositorio.Agendamentos;
 import br.org.apaebrasil.spag.dominio.repositorio.Pacientes;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
