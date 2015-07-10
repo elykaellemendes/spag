@@ -10,57 +10,56 @@
 
         <p:menubar>
             <p:menuitem value="Início"
-                        icon="ui-icon-home"
+                        icon="fa fa-home"
                         outcome="/inicio"/>
 
             <p:submenu label="Pacientes">
                 <p:menuitem value="Prontuário"
-                            icon="ui-icon-search"
+                            icon="fa fa-clipboard"
                             outcome="/pacientes/prontuario"/>
                 <p:menuitem value="Adicionar"
-                            icon="ui-icon-circle-plus"
+                            icon="fa fa-plus-circle"
                             outcome="/pacientes/cadastro" />
                 <p:menuitem value="Visualizar"
-                            icon="ui-icon-search"
+                            icon="fa fa-search"
                             outcome="/pacientes/visualiza" />
             </p:submenu>
 
             <p:submenu label="Profissionais">
                 <p:menuitem value="Adicionar"
-                            icon="ui-icon-circle-plus"
+                            icon="fa fa-plus-circle"
                             outcome="/profissionais/cadastro"/>
                 <p:menuitem value="Visualizar"
-                            icon="ui-icon-search"
+                            icon="fa fa-search"
                             outcome="/profissionais/visualiza"/>
             </p:submenu>
 
             <p:submenu label="Funcionários">
                 <p:menuitem value="Adicionar"
-                            icon="ui-icon-circle-plus"
+                            icon="fa fa-plus-circle"
                             outcome="/funcionarios/cadastro"/>
                 <p:menuitem value="Visualizar"
-                            icon="ui-icon-search"
+                            icon="fa fa-search"
                             outcome="/funcionarios/visualiza"/>
             </p:submenu>
 
             <p:submenu label="Consultas">
                 <p:menuitem value="Agenda"
-                            icon="ui-icon-search"
+                            icon="fa fa-calendar"
                             outcome="/consultas/agenda"/>
                 <p:menuitem value="Agendamento"
-                            icon="ui-icon-circle-plus"
+                            icon="fa fa-pencil-square-o"
                             outcome="/consultas/agendamentos"/>
             </p:submenu>
 
             <p:submenu label="Ajuda" >
                 <p:menuitem value="Sobre"
-                            icon=""
-                            update="menu"
-                            url=""/>
+                            icon="fa-question-circle"
+                            outcome="/inicio"/>
             </p:submenu>
 
             <p:menuitem value="Sair"
-                        icon="ui-icon-power"
+                        icon="fa fa-power-off"
                         action="#{controleLogin.sair()}"
                         outcome="/index"/>
         </p:menubar>
