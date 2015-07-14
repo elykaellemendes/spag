@@ -10,7 +10,6 @@ import br.org.apaebrasil.spag.dominio.Especializacao;
 import br.org.apaebrasil.spag.dominio.Paciente;
 import br.org.apaebrasil.spag.dominio.repositorio.Agendamentos;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
