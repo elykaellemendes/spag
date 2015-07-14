@@ -9,6 +9,7 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <script type="text/javascript" src="#{request.contextPath}/js/locale_pt.js"></script>
         <title>SPAG</title>
     </h:head>
     <h:body>
@@ -21,12 +22,13 @@
 
         <h:form id="agendamento">
             <p:messages showSummary="true" autoUpdate="true"/>
-            
+
             <p:panel id="panel1" header="Agendamento" style="margin-bottom:10px;">
                 <p:panelGrid columns="2" styleClass="ui-noborder">
                     <p:outputLabel for="dataHora" value="Data e Hora:"/>
                     <p:calendar id="dataHora"
-                                locale="pt_BR" pattern="dd/MM/yyyy HH:mm"
+                                locale="pt"
+                                pattern="dd/MM/yyyy HH:mm"
                                 value="#{controladorAgendamentos.agendamento.dataHora}"
                                 required="true"/>
 
@@ -36,7 +38,7 @@
                                      required="true">
                         <f:selectItems value="#{controladorProfissionais.especializacao}" />
                     </p:selectOneMenu>
-                    
+
                     <p:outputLabel for="paciente" value="Paciente: "/>
                     <p:autoComplete id="paciente"
                                     value="#{controladorAgendamentos.agendamento.paciente}"

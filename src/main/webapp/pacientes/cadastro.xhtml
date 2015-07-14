@@ -20,7 +20,7 @@
 
         <h:form id="cadastroPaciente">
             <p:messages showSummary="true" autoUpdate="true"/>
-            
+
             <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
                 <p:panelGrid columns="2" styleClass="ui-noborder">
                     <p:outputLabel for="nome" value="Nome:"/>
@@ -34,7 +34,8 @@
                     <p:selectOneMenu id="sexo" label="Sexo"
                                      value="#{controladorPacientes.paciente.sexo}"
                                      style="width:100%;"
-                                     required="true">
+                                     required="true"
+                                     requiredMessage="Campo obrigatório">
                         <f:selectItems value="#{controladorPacientes.sexos}" />
                     </p:selectOneMenu>
 
@@ -42,6 +43,8 @@
                     <p:inputMask id="dataNascimento"
                                  mask="99/99/9999"
                                  value="#{controladorPacientes.paciente.dataNascimento}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
                                  size="50">
                         <f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy"/> 
                     </p:inputMask>
@@ -63,6 +66,9 @@
                     <p:outputLabel for="naturalidade" value="Naturalidade:"/>
                     <p:inputText id="naturalidade"
                                  value="#{controladorPacientes.paciente.naturalidade}"
+                                 placeholder="Brasileiro"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
                                  size="50"/>
                 </p:panelGrid>
             </p:panel>
@@ -91,12 +97,20 @@
                     <p:outputLabel for="cidade" value="Cidade:"/>
                     <p:inputText id="cidade"
                                  value="#{controladorPacientes.paciente.endereco.cidade}"
+                                 placeholder="Garanhuns"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
                                  size="50"/>
 
                     <p:outputLabel for="uf" value="UF:"/>
-                    <p:inputText id="uf"
-                                 value="#{controladorPacientes.paciente.endereco.uf}"
-                                 size="50"/>
+                    <p:selectOneMenu id="uf"
+                                     label="PE"
+                                     value="#{controladorPacientes.paciente.endereco.UF}"
+                                     required="true"
+                                     requiredMessage="Campo obrigatório"
+                                     style="width:100%;">
+                        <f:selectItems value="#{controladorPacientes.UFS}" />
+                    </p:selectOneMenu>
 
                     <p:outputLabel for="cep" value="CEP:"/>
                     <p:inputMask id="cep"
@@ -115,13 +129,14 @@
                     <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
                     <p:inputText id="cartaoSUS"
                                  value="#{controladorPacientes.paciente.cartaoSus}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
                                  size="50"/>
                 </p:panelGrid>
             </p:panel>
             <p:commandButton value="Salvar"
                              update="cadastroPaciente"
-                             action="#{controladorPacientes.adicionar}"
-                             oncomplete="/pacientes/visualiza"/>
+                             action="#{controladorPacientes.adicionar}"/>
             <p:commandButton value="Cancelar"
                              oncomplete="/pacientes/visualiza"/>
         </h:form>
