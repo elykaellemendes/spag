@@ -63,6 +63,7 @@
                     <p:outputLabel for="naturalidade" value="Naturalidade:"/>
                     <p:inputText id="naturalidade"
                                  value="#{controladorPacientes.paciente.naturalidade}"
+                                 placeholder="Brasileiro"
                                  size="50"/>
                 </p:panelGrid>
             </p:panel>
@@ -91,13 +92,17 @@
                     <p:outputLabel for="cidade" value="Cidade:"/>
                     <p:inputText id="cidade"
                                  value="#{controladorPacientes.paciente.endereco.cidade}"
+                                 placeholder="Garanhuns"
                                  size="50"/>
 
                     <p:outputLabel for="uf" value="UF:"/>
-                    <p:inputText id="uf"
-                                 value="#{controladorPacientes.paciente.endereco.uf}"
-                                 size="50"/>
-
+                    <p:selectOneMenu id="uf"
+                                     label="PE"
+                                     value="#{controladorPacientes.paciente.endereco.UF}"
+                                     style="width:100%;">
+                        <f:selectItems value="#{controladorPacientes.UFS}" />
+                    </p:selectOneMenu>
+                    
                     <p:outputLabel for="cep" value="CEP:"/>
                     <p:inputMask id="cep"
                                  mask="99999-999"
@@ -120,8 +125,7 @@
             </p:panel>
             <p:commandButton value="Salvar"
                              update="cadastroPaciente"
-                             action="#{controladorPacientes.adicionar}"
-                             oncomplete="/pacientes/visualiza"/>
+                             action="#{controladorPacientes.adicionar}"/>
             <p:commandButton value="Cancelar"
                              oncomplete="/pacientes/visualiza"/>
         </h:form>

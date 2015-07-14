@@ -8,6 +8,7 @@ package br.org.apaebrasil.spag.apresentacao.controladores;
 import br.org.apaebrasil.spag.dominio.EstadoCivil;
 import br.org.apaebrasil.spag.dominio.Paciente;
 import br.org.apaebrasil.spag.dominio.Sexo;
+import br.org.apaebrasil.spag.dominio.UF;
 import br.org.apaebrasil.spag.dominio.repositorio.Pacientes;
 import java.io.Serializable;
 import java.util.List;
@@ -42,10 +43,12 @@ public class ControladorPacientes implements Serializable {
         paciente = new Paciente();
     }
 
-    public void adicionar() {
+    public String adicionar() {
         pacientes.inserir(paciente);
         consultar();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Paciente cadastrado com sucesso!"));
+        
+        return "/pacientes/visualiza.xhtml?faces-redirect=true";
     }
 
     public void alterar() {
@@ -68,6 +71,10 @@ public class ControladorPacientes implements Serializable {
         return EstadoCivil.values();
     }
 
+    public UF[] getUFS() {
+        return UF.values();
+    }
+    
     public void detalhe(Paciente paciente) {
         RequestContext.getCurrentInstance().openDialog("detalhe");
     }

@@ -7,6 +7,8 @@ package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
 import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Embeddable
 public class Endereco implements Serializable {
@@ -15,14 +17,16 @@ public class Endereco implements Serializable {
     private String numero;
     private String complemento;
     private String bairro;
-    private String cidade;
-    private String uf;
+    private String cidade;    
     private String cep;
+    
+    @Enumerated(EnumType.STRING)
+    private UF uf;
 
     public Endereco() {
     }
 
-    public Endereco(String logradouro, String numero, String complemento, String bairro, String cidade, String uf, String cep) {
+    public Endereco(String logradouro, String numero, String complemento, String bairro, String cidade, UF uf, String cep) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -72,11 +76,11 @@ public class Endereco implements Serializable {
         this.cidade = cidade;
     }
 
-    public String getUf() {
+    public UF getUF() {
         return uf;
     }
 
-    public void setUf(String uf) {
+    public void setUF(UF uf) {
         this.uf = uf;
     }
 
