@@ -7,33 +7,35 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <h:outputStylesheet name="css/estilo.css" />
         <title>SPAG</title>
     </h:head>
     <h:body>
-        <p:growl id="gro" life="4000" />
-        <h:form id="login" >
-            <p:layout>
-                <p:layoutUnit position="center">
-                    <h:panelGrid columns="2" cellpadding="50" cellspacing="60">
-                        Bem-vindos!
+        <div id="login-dialog">
+            <h1>Login</h1>
+            
+            <h:form id="frm">
+                <p:messages autoUpdate="true" />
+                
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="usuario" value="Usuário:"/>
+                    <p:inputText id="usuario"
+                                 value="#{controladorLogin.usuario}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="20"/>
 
-                        <p:panel header="Login">
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputLabel for="usuario" value="Usuário:"/>
-                                <p:inputText  id="login" value="#{Usuario.login}" maxlength="7" required="true"/>
-                                <h:outputLabel for="senha" value="Senha:"/>
-                                <p:password id="senha" value="#{Usuario.senha}" required="true"/>
-                            </h:panelGrid>
-
-                            <div style="width: 100%; text-align:right; margin-top:10%;">
-                                <p:commandButton value="Ok" action="#{controladorUsuarios.realizaLogin(Usuario.login, Usuario.senha)}" update=":gro"/>
-                            </div>
-                        </p:panel>
-
-                    </h:panelGrid>
-                </p:layoutUnit>
-            </p:layout>
-        </h:form>
-
+                    <p:outputLabel for="senha" value="Senha:"/>
+                    <p:password id="senha"
+                                 value="#{controladorLogin.senha}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="20"/>
+                    <p:outputLabel />
+                    <p:commandButton value="Acessar"
+                                     action="#{controladorLogin.login}"/>
+                </p:panelGrid>
+            </h:form>
+        </div>
     </h:body>
 </html>
