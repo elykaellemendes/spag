@@ -6,6 +6,7 @@
 package br.org.apaebrasil.spag.dominio.repositorio;
 
 import br.org.apaebrasil.spag.dominio.Profissional;
+import br.org.apaebrasil.spag.dominio.Usuario;
 import java.util.List;
 
 /**
@@ -16,5 +17,5 @@ public interface Profissionais extends Repositorio<Profissional, Integer>{
     public List<Profissional> porProfissional (String nome);
     public List<Profissional> porCpf (String cpf);
     public List<Profissional> porEspecializacao (String especializacao);
-//    porEspecializacao (String ou Especializacao)?
+    public Profissional porUsuario(Usuario usuario);
 }
