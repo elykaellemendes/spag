@@ -76,6 +76,6 @@ public class ControladorPacientes implements Serializable {
     }
     
     public void detalhe(Paciente paciente) {
-        RequestContext.getCurrentInstance().openDialog("detalhe");
+        this.paciente = paciente;
     }
 }

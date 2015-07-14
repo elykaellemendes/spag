@@ -21,12 +21,14 @@
         <h1>Lista de Pacientes</h1>
 
         <h:form id="frm">
-            <p:messages showDetail="true" showSummary="true" autoUpdate="true" />
+            <p:messages showSummary="true" autoUpdate="true" />
 
             <p:dataTable id="tabela" value="#{controladorPacientes.todosPacientes}" var="paciente" 
                          rowKey="#{paciente.codigo}" paginator="true" rows="10" paginatorPosition="bottom">
                 <p:column headerText="Nome" sortBy="#{paciente.nome}">
-                    <p:commandLink actionListener="#{controladorPacientes.detalhe(paciente)}">
+                    <p:commandLink actionListener="#{controladorPacientes.detalhe(paciente)}"
+                                   update=":frm:panel1,:frm:panel2,:frm:panel3"
+                                   oncomplete="PF('pacienteDialog').show();">
                         <h:outputText value="#{paciente.nome}"/>
                     </p:commandLink>
                 </p:column>
@@ -46,6 +48,62 @@
                     </h:panelGroup>
                 </p:column>
             </p:dataTable>
+            <p:dialog widgetVar="pacienteDialog" header="Paciente">
+                <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
+                    <p:panelGrid columns="2" styleClass="ui-noborder">
+                        <p:outputLabel for="nome" value="Nome:"/>
+                        <h:outputText id="nome" value="#{controladorPacientes.paciente.nome}"/>
+
+                        <p:outputLabel for="sexo" value="Sexo:"/>
+                        <h:outputText id="sexo" value="#{controladorPacientes.paciente.sexo}"/>
+
+                        <p:outputLabel for="dataNascimento" value="Data de nascimento:"/>
+                        <h:outputText id="dataNascimento" value="#{controladorPacientes.paciente.dataNascimento}"/>
+
+                        <p:outputLabel for="filiacao" value="Filiação:"/>
+                        <h:outputText id="filiacao" value="#{controladorPacientes.paciente.filiacao}"/>
+
+                        <p:outputLabel for="estadoCivil" value="Estado civil:"/>
+                        <h:outputText id="estadoCivil" value="#{controladorPacientes.paciente.estadoCivil}"/>
+
+                        <p:outputLabel for="naturalidade" value="Naturalidade:"/>
+                        <h:outputText id="naturalidade" value="#{controladorPacientes.paciente.naturalidade}"/>
+                    </p:panelGrid>
+                </p:panel>
+                <p:panel id="panel2" header="Endereço" style="margin-bottom:10px;">
+                    <p:panelGrid columns="2" styleClass="ui-noborder">
+                        <p:outputLabel for="logradouro" value="Logradouro:"/>
+                        <h:outputText id="logradouro" value="#{controladorPacientes.paciente.endereco.logradouro}"/>
+
+                        <p:outputLabel for="numero" value="Número:"/>
+                        <h:outputText id="numero" value="#{controladorPacientes.paciente.endereco.numero}"/>
+
+                        <p:outputLabel for="complemento" value="Complemento:"/>
+                        <h:outputText id="complemento" value="#{controladorPacientes.paciente.endereco.complemento}"/>
+
+                        <p:outputLabel for="bairro" value="Bairro:"/>
+                        <h:outputText id="bairro" value="#{controladorPacientes.paciente.endereco.bairro}"/>
+
+                        <p:outputLabel for="cidade" value="Cidade:"/>
+                        <h:outputText id="cidade" value="#{controladorPacientes.paciente.endereco.cidade}"/>
+
+                        <p:outputLabel for="uf" value="UF:"/>
+                        <h:outputText id="uf" value="#{controladorPacientes.paciente.endereco.UF}"/>
+
+                        <p:outputLabel for="cep" value="CEP:"/>
+                        <h:outputText id="cep" value="#{controladorPacientes.paciente.endereco.cep}"/>
+                    </p:panelGrid>
+                </p:panel>
+                <p:panel id="panel3" header="Saúde" style="margin-bottom:10px;">
+                    <p:panelGrid columns="2" styleClass="ui-noborder">
+                        <p:outputLabel for="procedencia" value="Procedência:"/>
+                        <h:outputText id="procedencia" value="#{controladorPacientes.paciente.procedencia}"/>
+
+                        <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
+                        <h:outputText id="cartaoSUS" value="#{controladorPacientes.paciente.cartaoSus}"/>
+                    </p:panelGrid>
+                </p:panel>
+            </p:dialog>
         </h:form>
     </h:body>
 </html>
