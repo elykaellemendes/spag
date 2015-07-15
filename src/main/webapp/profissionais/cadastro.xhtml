@@ -21,7 +21,7 @@
         <h:form id="cadastroProfissional">
             <p:messages showSummary="true" autoUpdate="true"/>
 
-            <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
+            <p:panel id="panel1" header="Dados Profissionais" style="margin-bottom:10px;">
                 <p:panelGrid columns="2" styleClass="ui-noborder">
                     <p:outputLabel for="nome" value="Nome:"/>
                     <p:inputText id="nome"
@@ -41,6 +41,14 @@
                                  required="true"
                                  requiredMessage="Campo obrigatório"
                                  size="50"/>
+                     <p:outputLabel for="especializacao" value="Especialização:"/>
+                    <p:selectOneMenu id="especializacao" label="Especializacao"
+                                     value="#{controladorProfissionais.profissional.especializacao}"
+                                     style="width:100%;"
+                                     required="true"
+                                     requiredMessage="Campo obrigatório">
+                        <f:selectItems value="#{controladorProfissionais.especializacao}" />
+                    </p:selectOneMenu>
                 </p:panelGrid>
             </p:panel>
             <p:panel id="panel2" header="Dados de usuário" style="margin-bottom:10px;">
@@ -57,15 +65,14 @@
                                  required="true"
                                  requiredMessage="Campo obrigatório"
                                  size="50"/>
-
-                    <p:commandButton value="Salvar"
-                                     update="cadastroProfissional"
-                                     action="#{controladorProfissionais.adicionar}"
-                                     oncomplete="/profissionais/visualiza"/>
-                    <p:commandButton value="Cancelar"
-                                     oncomplete="/profissionais/visualiza"/>
                 </p:panelGrid>
             </p:panel>
+            <p:commandButton value="Salvar"
+                             update="cadastroProfissional"
+                             action="#{controladorProfissionais.adicionar}"
+                             oncomplete="/profissionais/visualiza"/>
+            <p:commandButton value="Cancelar"
+                             oncomplete="/profissionais/visualiza"/>
         </h:form> 
     </h:body>
 </html>
