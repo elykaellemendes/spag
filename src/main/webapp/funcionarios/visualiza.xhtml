@@ -15,29 +15,33 @@
         <ui:include src="/menu.xhtml" />
 
         <f:metadata>
-            <f:viewAction action="#{controladorFuncionarios.consultar()}" />
+            <f:viewAction action="#{controladorFuncionarios.consultar}" />
         </f:metadata>
 
-       <h:form id="visualizaiosFuncionarios">
-            <p/>
-            <p:fieldset>
-                <div class="centro">
-                    <p:dataTable id="tabelaforn" value="#{controladorFuncionarios.todosFuncionarios}" var="funcionario" 
-                                 rowKey="#{funcionario.codigo}" paginator="true" rows="10">
+        <h1>Lista de Funcionários</h1>
 
-                        <p:column headerText="Nome" filterValue="" filterBy="#{funcionario.nome}">
-                            <h:outputText value="#{funcionario.nome}"/>
-                        </p:column>
-                        <p:column headerText="CPF" filterValue="" filterBy="#{funcionario.cpf}">
-                            <h:outputText value="#{funcionario.cpf}"/>
-                        </p:column>
+        <h:form id="Vzf">
+            <p:messages showDetail="true" showSummary="true" autoUpdate="true" />
 
-                        <p:column style="width:32px;text-align: center">
-                            <p:commandButton oncomplete="location.href='../funcionarios/altera.xhtml'" icon="ui-icon-pencil" title="Alterar"/>
-                        </p:column>
-                    </p:dataTable>
-                </div>
-                </p:fieldset>
+            <p:dataTable id="tabela" value="#{controladorFuncionarios.todosFuncionarios}" var="funcionario" 
+                         rowKey="#{funcionario.codigo}" paginator="true" rows="10" paginatorPosition="bottom">
+                <p:column headerText="Nome" sortBy="#{funcionario.nome}">
+                    <p:commandLink actionListener="#{controladorFuncionarios.detalhe(funcionario)}">
+                        <h:outputText value="#{funcionario.nome}"/>
+                    </p:commandLink>
+                </p:column>
+
+                <p:column headerText="CPF" sortBy="#{funcionario.cpf}">
+                    <h:outputText value="#{funcionario.cpf}"/>
+                </p:column>
+                <p:column width="40" style="text-align: center">
+                    <h:panelGroup style="white-space: nowrap">
+                        <p:button icon="ui-icon-pencil" title="Editar" outcome="/funcionarios/altera">
+                            <f:param name="codigo" value="#{funcionario.codigo}" />
+                        </p:button>
+                    </h:panelGroup>
+                </p:column>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

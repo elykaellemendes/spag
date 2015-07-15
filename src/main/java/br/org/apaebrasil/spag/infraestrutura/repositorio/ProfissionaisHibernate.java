@@ -16,21 +16,36 @@ import javax.persistence.Query;
  *
  * @author Pc
  */
-public class ProfissionaisHibernate extends RepositorioHibernate<Profissional, Integer> implements Profissionais{
+public class ProfissionaisHibernate extends RepositorioHibernate<Profissional, Integer> implements Profissionais {
 
     @Override
     public List<Profissional> porProfissional(String nome) {
-        return manager.createQuery("from Profissional p where p.nome = :nome").getResultList();
+        Objects.requireNonNull(nome, "nome inválido");
+
+        Query query = manager.createQuery("FROM Profissional p WHERE p.nome LIKE :nome");
+        query.setParameter("nome", "%" + nome + "%");
+
+        return query.getResultList();
     }
 
     @Override
     public List<Profissional> porCpf(String cpf) {
-        return manager.createQuery("from Profissional p where p.cpf = :cpf").getResultList();
+        Objects.requireNonNull(cpf, "cpf inválido");
+
+        Query query = manager.createQuery("FROM Profissional p WHERE p.nome LIKE :cpf");
+        query.setParameter("cpf", "%" + cpf + "%");
+
+        return query.getResultList();
     }
 
     @Override
     public List<Profissional> porEspecializacao(String especializacao) {
-        return manager.createQuery("from Profissional p where p.especializacao = :especializacao").getResultList();
+        Objects.requireNonNull(especializacao, "cpf especializacao");
+
+        Query query = manager.createQuery("FROM Profissional p WHERE p.especializacao LIKE :especializacao");
+        query.setParameter("especializacao", "%" + especializacao + "%");
+
+        return query.getResultList();
     }
 
     @Override

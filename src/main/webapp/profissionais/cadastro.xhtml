@@ -15,36 +15,58 @@
         <ui:include src="/menu.xhtml" />
 
         <f:metadata>
-            <f:viewAction action="#{controladorProfissionais.consultar}" />
+            <f:viewAction action="#{controladorProfissionais.novo}" />
         </f:metadata>
 
         <h:form id="cadastroProfissional">
-            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
-            <h:panelGrid columns="3" cellpadding="5">
+            <p:messages showSummary="true" autoUpdate="true"/>
 
-                Nome:
-                <p:inputText id="inNome" value="#{controladorProfissionais.profissional.nome}"
-                             required="true" requiredMessage="Campo obrigatório"/>
-                <p:message for="inNome"/>
-                CPF:
-                <p:inputMask mask="999.999.999-99" id="inCpf" value="#{controladorProfissionais.profissional.cpf}"
-                             required="true" requiredMessage="Campo obrigatório"/>
-                <p:message for="inCpf"/>
-                Registro Medico:
-                <p:inputText id="inRegistroMedico" value="#{controladorProfissionais.profissional.registroMedico}"
-                             required="true" requiredMessage="Campo obrigatório"/>
-                <p:message for="inRegistroMedico"/>
+            <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="nome" value="Nome:"/>
+                    <p:inputText id="nome"
+                                 value="#{controladorProfissionais.profissional.nome}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="50"/>
+                    <p:outputLabel for="cpf" value="CPF:"/>
+                    <p:inputMask id="cpf"
+                                 mask="999.999.999-99"
+                                 value="#{controladorProfissionais.profissional.cpf}"
+                                 size="50">
+                    </p:inputMask>
+                    <p:outputLabel for="registroMedico" value="Registro Médico"/>
+                    <p:inputText id="registroMedico"
+                                 value="#{controladorProfissionais.profissional.registroMedico}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="50"/>
+                </p:panelGrid>
+            </p:panel>
+            <p:panel id="panel2" header="Dados de usuário" style="margin-bottom:10px;">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="login" value="Login:"/>
+                    <p:inputText id="login"
+                                 value="#{controladorProfissionais.profissional.usuario.login}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="50"/>
+                    <p:outputLabel for="senha" value="Senha:"/>
+                    <p:inputText id="senha"
+                                 value="#{controladorProfissionais.profissional.usuario.senha}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="50"/>
 
-                Especialização:
-                <h:selectOneMenu id="inEspecializacao" label="especializacao" value="#{controladorProfissionais.profissional.especializacao}"
-                                 required="true">
-                    <f:selectItems value="#{controladorProfissionais.especializacao}" />
-                </h:selectOneMenu> <br></br>
-
-                <p:commandButton value="Salvar" update="cadastroProfissional" action="#{controladorProfissionais.adicionar()}" oncomplete="location.href='../profissionais/visualiza.xhtml'"/>
-                <p:commandButton value="Cancelar" oncomplete="location.href='../profissionais/visualiza.xhtml'"/>
-            </h:panelGrid>
-        </h:form>  
+                    <p:commandButton value="Salvar"
+                                     update="cadastroProfissional"
+                                     action="#{controladorProfissionais.adicionar}"
+                                     oncomplete="/profissionais/visualiza"/>
+                    <p:commandButton value="Cancelar"
+                                     oncomplete="/profissionais/visualiza"/>
+                </p:panelGrid>
+            </p:panel>
+        </h:form> 
     </h:body>
 </html>
 

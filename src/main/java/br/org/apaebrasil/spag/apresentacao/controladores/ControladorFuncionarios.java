@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -29,14 +30,9 @@ public class ControladorFuncionarios implements Serializable {
     private Funcionarios funcionarios;
 //   repositorio
 
-    private Funcionario funcionario = new Funcionario();
-//    selected
-
+    private Funcionario funcionario;
     private List<Funcionario> todosFuncionarios;
 
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
     public void consultar() {
         todosFuncionarios = funcionarios.recuperarTodos();
     }
@@ -51,24 +47,18 @@ public class ControladorFuncionarios implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Funcionário cadastrado com sucesso!"));
     }
 
-    public Funcionario recuperar(int codigo) {
-        return funcionarios.recuperar(codigo);
-    }
-    
     public void alterar() {
         funcionarios.alterar(funcionario);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Funcionário alterado com sucesso!"));
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
     }
 
     public List<Funcionario> getTodosFuncionarios() {
         return todosFuncionarios;
     }
-
-    public Funcionario porProfissional(String nome) {
-        return (Funcionario) funcionarios.porProfissional(nome);
-    }
-
-    public Funcionario porCpf(String cpf) {
-        return (Funcionario) funcionarios.porCpf(cpf);
+    public void detalhe(Funcionario funcionario) {
+        RequestContext.getCurrentInstance().openDialog("detalhe");
     }
 }

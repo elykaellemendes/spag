@@ -12,7 +12,9 @@ import java.util.List;
  *
  * @author Pc
  */
-public interface Funcionarios extends Repositorio<Funcionario, Integer>{
-    public List<Funcionario> porProfissional (String nome);
-    public List<Funcionario> porCpf (String cpf);
+public interface Funcionarios extends Repositorio<Funcionario, Integer> {
+
+    public List<Funcionario> porNome(String nome);
+
+    public List<Funcionario> porCpf(String cpf);
 }

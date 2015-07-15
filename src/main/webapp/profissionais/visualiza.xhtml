@@ -18,32 +18,34 @@
             <f:viewAction action="#{controladorProfissionais.consultar}" />
         </f:metadata>
 
-        <h:form id="visualizaiosProfissionais">
-            <p/>
-            <p:fieldset>
-                <div class="centro">
-                    <p:dataTable id="tabelaforn" value="#{controladorProfissionais.todosProfissionais}" var="profissional" 
-                                 rowKey="#{profissional.codigo}" paginator="true" rows="10">
+        <h1>Lista de Profissionais</h1>
 
-                        <p:column headerText="Nome" filterValue="" filterBy="#{profissional.nome}">
-                            <h:outputText value="#{profissional.nome}"/>
-                        </p:column>
-                        <p:column headerText="CPF" filterValue="" filterBy="#{profissional.cpf}">
-                            <h:outputText value="#{profissional.cpf}"/>
-                        </p:column>
-                        <p:column headerText="Registro Médico" filterValue="" filterBy="#{profissional.registroMedico}">
-                            <h:outputText value="#{profissional.registroMedico}"/>
-                        </p:column>
-                        <p:column headerText="Especialização" filterValue="" filterBy="#{profissional.especializacao}">
-                            <h:outputText value="#{profissional.especializacao}"/>
-                        </p:column>
+        <h:form id="frm">
+            <p:messages showDetail="true" showSummary="true" autoUpdate="true" />
 
-                        <p:column style="width:32px;text-align: center">
-                            <p:commandButton oncomplete="location.href='../profissionais/altera.xhtml'" icon="ui-icon-pencil" title="Alterar"/>
-                        </p:column>
-                    </p:dataTable>
-                </div>
-                </p:fieldset>
+            <p:dataTable id="tabela" value="#{controladorProfissionais.todosProfissionais}" var="profissional" 
+                         rowKey="#{profissional.codigo}" paginator="true" rows="10" paginatorPosition="bottom">
+                <p:column headerText="Nome" sortBy="#{profissional.nome}">
+                    <p:commandLink actionListener="#{controladorProfissionais.detalhe(profissional)}">
+                        <h:outputText value="#{profissional.nome}"/>
+                    </p:commandLink>
+                </p:column>
+
+                <p:column headerText="CPF" sortBy="#{profissional.cpf}">
+                    <h:outputText value="#{paciente.cartaoSus}"/>
+                </p:column>
+
+                <p:column headerText="Especialização" sortBy="#{profissional.especializacao}">
+                    <h:outputText value="#{profissional.especializacao}"/>
+                </p:column>
+                <p:column width="40" style="text-align: center">
+                    <h:panelGroup style="white-space: nowrap">
+                        <p:button icon="ui-icon-pencil" title="Editar" outcome="/profissionais/altera">
+                            <f:param name="codigo" value="#{profissional.codigo}" />
+                        </p:button>
+                    </h:panelGroup>
+                </p:column>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

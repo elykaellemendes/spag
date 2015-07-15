@@ -15,24 +15,49 @@
         <ui:include src="/menu.xhtml" />
 
         <f:metadata>
-            <f:viewAction action="#{controladorFuncionarios.consultar}" />
+            <f:viewAction action="#{controladorFuncionarios.novo}" />
         </f:metadata>
 
-        <h:form id="cadastro">
-            <p:growl id="gro" life="4000" showSummary="true" showDetail="true"/>
-            <h:panelGrid columns="3" cellpadding="5">
-                Nome:
-                <h:inputText id="inNome" value="#{controladorFuncionarios.funcionario.nome}"
-                             required="true" requiredMessage="Campo obrigatório"/>
-                <p:message for="inNome"/>
-                Cpf:
-                <p:inputMask mask="999.999.999-99" id="inCpf" value="#{controladorFuncionarios.funcionario.cpf}"
-                             required="true" requiredMessage="Campo obrigatório"/>
-                <p:message for="inCpf"/>
+        <h:form id="cadastroFuncionario">
+            <p:messages showSummary="true" autoUpdate="true"/>
 
-                <p:commandButton value="Cadastrar" update="cadastro" action="#{controladorFuncionarios.adicionar()}" oncomplete="location.href='../funcionarios/visualiza.xhtml'"/>
-                <p:commandButton value="Cancelar" oncomplete="location.href='../funcionarios/visualiza.xhtml'"/>
-            </h:panelGrid>
+            <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="nome" value="Nome:"/>
+                    <p:inputText id="nome"
+                                 value="#{controladorFuncionarios.funcionario.nome}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="50"/>
+                    <p:outputLabel for="cpf" value="CPF:"/>
+                    <p:inputMask id="cpf"
+                                 mask="999.999.999-99"
+                                 value="#{controladorFuncionarios.funcionario.cpf}"
+                                 size="50"/>
+                </p:panelGrid>
+            </p:panel>
+            <p:panel id="panel2" header="Dados de usuario" style="margin-bottom:10px;">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="login" value="Login:"/>
+                    <p:inputText id="login"
+                                 value="#{controladorFuncionarios.funcionario.usuario.login}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="50"/>
+                    <p:outputLabel for="senha" value="Senha:"/>
+                    <p:inputText id="senha"
+                                 value="#{controladorFuncionarios.funcionario.usuario.senha}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="50"/>
+                </p:panelGrid>
+            </p:panel>
+            <p:commandButton value="Salvar"
+                             update="cadastroFuncionario"
+                             action="#{controladorFuncionarios.adicionar}"
+                             oncomplete="/funcionarios/visualiza"/>
+            <p:commandButton value="Cancelar"
+                             oncomplete="/funcionarios/visualiza"/>
         </h:form>
     </h:body>
 </html>
