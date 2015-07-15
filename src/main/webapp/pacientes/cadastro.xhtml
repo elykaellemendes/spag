@@ -70,6 +70,12 @@
                                  required="true"
                                  requiredMessage="Campo obrigatório"
                                  size="50"/>
+                    <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
+                    <p:inputText id="cartaoSUS"
+                                 value="#{controladorPacientes.paciente.cartaoSus}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório"
+                                 size="50"/>
                 </p:panelGrid>
             </p:panel>
             <p:panel id="panel2" header="Endereço" style="margin-bottom:10px;">
@@ -116,21 +122,6 @@
                     <p:inputMask id="cep"
                                  mask="99999-999"
                                  value="#{controladorPacientes.paciente.endereco.cep}"
-                                 size="50"/>
-                </p:panelGrid>
-            </p:panel>
-            <p:panel id="panel3" header="Saúde" style="margin-bottom:10px;">
-                <p:panelGrid columns="2" styleClass="ui-noborder">
-                    <p:outputLabel for="procedencia" value="Procedência:"/>
-                    <p:inputText id="procedencia"
-                                 value="#{controladorPacientes.paciente.procedencia}"
-                                 size="50"/>
-
-                    <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
-                    <p:inputText id="cartaoSUS"
-                                 value="#{controladorPacientes.paciente.cartaoSus}"
-                                 required="true"
-                                 requiredMessage="Campo obrigatório"
                                  size="50"/>
                 </p:panelGrid>
             </p:panel>
