@@ -34,7 +34,7 @@ public class ControladorLogin {
         FacesContext context = FacesContext.getCurrentInstance();
 
         if ("admin".equals(this.usuario) && "123".equals(senha)) {
-            profissional = profissionais.porUsuario(new Usuario(usuario, senha));
+            //profissional = profissionais.porUsuario(new Usuario(usuario, senha));
             
             return "/inicio.xhtml?faces-redirect=true";
         } else {

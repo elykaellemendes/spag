@@ -34,6 +34,9 @@ public class AutorizacaoFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
+        profissional = new Profissional();
+        profissional.setNome("Pedro");
+        
         if (profissional.getNome() == null && !request.getRequestURI().endsWith("/index.xhtml")
                 && !request.getRequestURI().contains("/javax.faces.resource/")) {
             response.sendRedirect(request.getContextPath() + "/index.xhtml");
