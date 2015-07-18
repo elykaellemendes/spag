@@ -53,7 +53,9 @@
             <p:submenu label="Ajuda" >
                 <p:menuitem value="Sobre"
                             icon="fa-question-circle"
-                            outcome="/inicio"/>
+                            oncomplete="PF('sobreSpag').show();">
+
+                </p:menuitem>
             </p:submenu>
 
             <p:menuitem value="Sair"
@@ -61,6 +63,12 @@
                         action="#{controleLogin.sair()}"
                         outcome="/index"/>
         </p:menubar>
+        <p:dialog widgetVar="sobreSpag" header="Sobre" height="300px" width="500">
+            <p:panel id="panel" style="margin-bottom:10px;">
+                <h1>Sistema de Gerenciamento de Prontuário Médico da APAE Garanhuns - SPAG </h1>
+                <h2>O sistema tem como finalidade ajudar todo o setor de saúde da empresa: APAE – Associação de Pais e Amigos dos Excepcionais.</h2>
+            </p:panel>
+        </p:dialog>
     </h:form>
     <p />
 </ui:composition>
