@@ -27,7 +27,7 @@
                          rowKey="#{paciente.codigo}" paginator="true" rows="10" paginatorPosition="bottom">
                 <p:column headerText="Nome" sortBy="#{paciente.nome}">
                     <p:commandLink actionListener="#{controladorPacientes.detalhe(paciente)}"
-                                   update=":frm:panel1,:frm:panel2,:frm:panel3"
+                                   update=":frm:panel1,:frm:panel2"
                                    oncomplete="PF('pacienteDialog').show();">
                         <h:outputText value="#{paciente.nome}"/>
                     </p:commandLink>
@@ -68,6 +68,12 @@
 
                         <p:outputLabel for="naturalidade" value="Naturalidade:"/>
                         <h:outputText id="naturalidade" value="#{controladorPacientes.paciente.naturalidade}"/>
+
+                        <p:outputLabel for="procedencia" value="Procedência:"/>
+                        <h:outputText id="procedencia" value="#{controladorPacientes.paciente.procedencia}"/>
+
+                        <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
+                        <h:outputText id="cartaoSUS" value="#{controladorPacientes.paciente.cartaoSus}"/>
                     </p:panelGrid>
                 </p:panel>
                 <p:panel id="panel2" header="Endereço" style="margin-bottom:10px;">
@@ -92,15 +98,6 @@
 
                         <p:outputLabel for="cep" value="CEP:"/>
                         <h:outputText id="cep" value="#{controladorPacientes.paciente.endereco.cep}"/>
-                    </p:panelGrid>
-                </p:panel>
-                <p:panel id="panel3" header="Saúde" style="margin-bottom:10px;">
-                    <p:panelGrid columns="2" styleClass="ui-noborder">
-                        <p:outputLabel for="procedencia" value="Procedência:"/>
-                        <h:outputText id="procedencia" value="#{controladorPacientes.paciente.procedencia}"/>
-
-                        <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
-                        <h:outputText id="cartaoSUS" value="#{controladorPacientes.paciente.cartaoSus}"/>
                     </p:panelGrid>
                 </p:panel>
             </p:dialog>
