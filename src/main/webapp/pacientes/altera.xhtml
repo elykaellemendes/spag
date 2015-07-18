@@ -13,55 +13,80 @@
     </h:head>
     <h:body>
         <ui:include src="/menu.xhtml" />
-        
-         <f:metadata>
-            <f:viewAction action="#{controladorPacientes.consultar}" />
-        </f:metadata>
+        <h:form id="alteraPaciente">
+            <p:messages showSummary="true" autoUpdate="true"/>
+            <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="nome" value="Nome:"/>
+                    <p:inputText id="nome" value="#{controladorPacientes.paciente.nome}"
+                                 size="50"/>
 
-        <h:form>
-            <h:panelGrid columns="2">
-                Nome:
-                <h:inputText value="#{controladorPacientes.paciente.nome}"/>
-                Sexo:
-                <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.sexo}"
-                                 required="true">
-                    <f:selectItems value="#{controladorPacientes.sexos}" />
-                </h:selectOneMenu>
-                Data de Nascimento:
-                <h:inputText value="#{controladorPacientes.paciente.dataNascimento}">
-                    <f:convertDateTime pattern="dd/MM/yyyy"/>
-                </h:inputText>
-                Filiação:
-                <h:inputText value="#{controladorPacientes.paciente.filiacao}"/>
-                Logradouro:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.logradouro}"/>
-                Número:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.numero}"/>
-                Complemento:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.complemento}"/>
-                Bairro:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.bairro}"/>
-                Cidade:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.cidade}"/>
-                UF:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.UF}"/>
-                CEP:
-                <h:inputText value="#{controladorPacientes.paciente.endereco.cep}"/>
-                Estado Civil:
-                <h:selectOneMenu label="sexo" value="#{controladorPacientes.paciente.estadoCivil}"
-                                 required="true">
-                    <f:selectItems value="#{controladorPacientes.estadosCivil}" />
-                </h:selectOneMenu>
-                Naturalidade:
-                <h:inputText value="#{controladorPacientes.paciente.naturalidade}"/>
-                Procedência:
-                <h:inputText value="#{controladorPacientes.paciente.procedencia}"/>
-                Cartão SUS:
-                <h:inputText value="#{controladorPacientes.paciente.cartaoSus}"/>
+                    <p:outputLabel for="sexo" value="Sexo:"/>
+                    <p:inputText id="sexo" value="#{controladorPacientes.paciente.sexo}"
+                                 size="50"/>
 
-                <p:commandButton value="Salvar" action="#{controladorPacientes.alterar()}" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
-                <p:commandButton value="Cancelar" oncomplete="location.href='../pacientes/visualiza.xhtml'"/>
-            </h:panelGrid>
+                    <p:outputLabel for="dataNascimento" value="Data de nascimento:"/>
+                    <p:inputText id="dataNascimento" value="#{controladorPacientes.paciente.dataNascimento}"
+                                 size="50"/>
+
+                    <p:outputLabel for="filiacao" value="Filiação:"/>
+                    <p:inputText id="filiacao" value="#{controladorPacientes.paciente.filiacao}"
+                                 size="50"/>
+
+                    <p:outputLabel for="estadoCivil" value="Estado civil:"/>
+                    <p:inputText id="estadoCivil" value="#{controladorPacientes.paciente.estadoCivil}"
+                                 size="50"/>
+
+                    <p:outputLabel for="naturalidade" value="Naturalidade:"/>
+                    <p:inputText id="naturalidade" value="#{controladorPacientes.paciente.naturalidade}"
+                                 size="50"/>
+
+                    <p:outputLabel for="procedencia" value="Procedência:"/>
+                    <p:inputText id="procedencia" value="#{controladorPacientes.paciente.procedencia}"
+                                 size="50"/>
+
+                    <p:outputLabel for="cartaoSUS" value="Cartão SUS:"/>
+                    <p:inputText id="cartaoSUS" value="#{controladorPacientes.paciente.cartaoSus}"
+                                 size="50"/>
+                </p:panelGrid>
+            </p:panel>
+            <p:panel id="panel2" header="Endereço" style="margin-bottom:10px;">
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+                    <p:outputLabel for="logradouro" value="Logradouro:"/>
+                    <p:inputText id="logradouro" value="#{controladorPacientes.paciente.endereco.logradouro}"
+                                 size="50"/>
+
+                    <p:outputLabel for="numero" value="Número:"/>
+                    <p:inputText id="numero" value="#{controladorPacientes.paciente.endereco.numero}"
+                                 size="50"/>
+
+                    <p:outputLabel for="complemento" value="Complemento:"/>
+                    <p:inputText id="complemento" value="#{controladorPacientes.paciente.endereco.complemento}"
+                                 size="50"/>
+
+                    <p:outputLabel for="bairro" value="Bairro:"/>
+                    <p:inputText id="bairro" value="#{controladorPacientes.paciente.endereco.bairro}"
+                                 size="50"/>
+
+                    <p:outputLabel for="cidade" value="Cidade:"/>
+                    <p:inputText id="cidade" value="#{controladorPacientes.paciente.endereco.cidade}"
+                                 size="50"/>
+
+                    <p:outputLabel for="uf" value="UF:"/>
+                    <p:inputText id="uf" value="#{controladorPacientes.paciente.endereco.UF}"
+                                 size="50"/>
+
+                    <p:outputLabel for="cep" value="CEP:"/>
+                    <p:inputText id="cep" value="#{controladorPacientes.paciente.endereco.cep}"
+                                 size="50"/>
+                </p:panelGrid>
+            </p:panel>
+
+            <p:commandButton value="Salvar"
+                             update="alteraPaciente"
+                             action="#{controladorPacientes.alterar}"/>
+            <p:commandButton value="Cancelar"
+                             oncomplete="/pacientes/visualiza"/>
         </h:form>
     </h:body>
 </html>
