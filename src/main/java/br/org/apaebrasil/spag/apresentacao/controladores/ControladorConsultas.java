@@ -10,7 +10,6 @@ import br.org.apaebrasil.spag.dominio.Paciente;
 import br.org.apaebrasil.spag.dominio.Profissional;
 import br.org.apaebrasil.spag.dominio.repositorio.Consultas;
 import br.org.apaebrasil.spag.dominio.repositorio.Pacientes;
-import br.org.apaebrasil.spag.dominio.repositorio.Profissionais;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.Date;
