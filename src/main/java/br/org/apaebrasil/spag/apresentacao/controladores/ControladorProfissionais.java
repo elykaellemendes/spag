@@ -41,10 +41,12 @@ public class ControladorProfissionais implements Serializable {
         profissional = new Profissional();
     }
 
-    public void adicionar() {
+    public String adicionar() {
         profissionais.inserir(profissional);
         consultar();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Profissional cadastrado com sucesso!"));
+        
+        return "/profissionais/visualiza.xhtml?faces-redirect=true";
     }
 
     public void alterar() {

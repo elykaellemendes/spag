@@ -41,7 +41,7 @@
                                  required="true"
                                  requiredMessage="Campo obrigatório"
                                  size="50"/>
-                     <p:outputLabel for="especializacao" value="Especialização:"/>
+                    <p:outputLabel for="especializacao" value="Especialização:"/>
                     <p:selectOneMenu id="especializacao" label="Especializacao"
                                      value="#{controladorProfissionais.profissional.especializacao}"
                                      style="width:100%;"
@@ -69,10 +69,9 @@
             </p:panel>
             <p:commandButton value="Salvar"
                              update="cadastroProfissional"
-                             action="#{controladorProfissionais.adicionar}"
-                             oncomplete="/profissionais/visualiza"/>
+                             action="#{controladorProfissionais.adicionar}"/>
             <p:button value="Cancelar"
-                             outcome="/profissionais/visualiza"/>
+                      outcome="/profissionais/visualiza"/>
         </h:form> 
     </h:body>
 </html>
