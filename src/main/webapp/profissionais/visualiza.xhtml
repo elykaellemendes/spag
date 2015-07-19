@@ -21,27 +21,41 @@
         <h1>Lista de Profissionais</h1>
 
         <h:form id="frm">
-            <p:messages showDetail="true" showSummary="true" autoUpdate="true" />
+            <p:messages showDetail="true"
+                        showSummary="true"
+                        autoUpdate="true" />
 
-            <p:dataTable id="tabela" value="#{controladorProfissionais.todosProfissionais}" var="profissional" 
-                         rowKey="#{profissional.codigo}" paginator="true" rows="10" paginatorPosition="bottom">
-                <p:column headerText="Nome" sortBy="#{profissional.nome}">
+            <p:dataTable id="tabela"
+                         value="#{controladorProfissionais.todosProfissionais}"
+                         var="profissional" 
+                         rowKey="#{profissional.codigo}"
+                         paginator="true"
+                         rows="10"
+                         paginatorPosition="bottom">
+                <p:column headerText="Nome"
+                          sortBy="#{profissional.nome}">
                     <p:commandLink actionListener="#{controladorProfissionais.detalhe(profissional)}">
                         <h:outputText value="#{profissional.nome}"/>
                     </p:commandLink>
                 </p:column>
 
-                <p:column headerText="CPF" sortBy="#{profissional.cpf}">
+                <p:column headerText="CPF"
+                          sortBy="#{profissional.cpf}">
                     <h:outputText value="#{profissional.cpf}"/>
                 </p:column>
 
-                <p:column headerText="Especialização" sortBy="#{profissional.especializacao}">
+                <p:column headerText="Especialização"
+                          sortBy="#{profissional.especializacao}">
                     <h:outputText value="#{profissional.especializacao}"/>
                 </p:column>
-                <p:column width="40" style="text-align: center">
+                <p:column width="40"
+                          style="text-align: center">
                     <h:panelGroup style="white-space: nowrap">
-                        <p:button icon="ui-icon-pencil" title="Editar" outcome="/profissionais/altera">
-                            <f:param name="codigo" value="#{profissional.codigo}" />
+                        <p:button icon="ui-icon-pencil"
+                                  title="Editar"
+                                  outcome="/profissionais/altera">
+                            <f:param name="codigo"
+                                     value="#{profissional.codigo}" />
                         </p:button>
                     </h:panelGroup>
                 </p:column>
