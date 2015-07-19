@@ -41,10 +41,12 @@ public class ControladorFuncionarios implements Serializable {
         funcionario = new Funcionario();
     }
 
-    public void adicionar() {
+    public String adicionar() {
         funcionarios.inserir(funcionario);
         consultar();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Funcionário cadastrado com sucesso!"));
+        
+        return "/funcionarios/visualiza.xhtml?faces-redirect=true";
     }
 
     public void alterar() {
