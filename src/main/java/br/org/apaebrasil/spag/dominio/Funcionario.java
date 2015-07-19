@@ -32,6 +32,7 @@ public class Funcionario implements Serializable{
     private Usuario usuario;
 
     public Funcionario() {
+        usuario = new Usuario();
     }
 
     public Funcionario(String nome, String cpf, Usuario usuario) {
