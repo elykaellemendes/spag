@@ -23,9 +23,15 @@
         <h:form id="frm">
             <p:messages showSummary="true" autoUpdate="true" />
 
-            <p:dataTable id="tabela" value="#{controladorPacientes.todosPacientes}" var="paciente" 
-                         rowKey="#{paciente.codigo}" paginator="true" rows="10" paginatorPosition="bottom">
-                <p:column headerText="Nome" sortBy="#{paciente.nome}">
+            <p:dataTable id="tabela"
+                         value="#{controladorPacientes.todosPacientes}"
+                         var="paciente" 
+                         rowKey="#{paciente.codigo}"
+                         paginator="true"
+                         rows="10"
+                         paginatorPosition="bottom">
+                <p:column headerText="Nome"
+                          sortBy="#{paciente.nome}">
                     <p:commandLink actionListener="#{controladorPacientes.detalhe(paciente)}"
                                    update=":frm:panel1,:frm:panel2"
                                    oncomplete="PF('pacienteDialog').show();">
@@ -33,11 +39,13 @@
                     </p:commandLink>
                 </p:column>
 
-                <p:column headerText="Cartão do SUS" sortBy="#{paciente.cartaoSus}">
+                <p:column headerText="Cartão do SUS"
+                          sortBy="#{paciente.cartaoSus}">
                     <h:outputText value="#{paciente.cartaoSus}"/>
                 </p:column>
 
-                <p:column headerText="Cidade" sortBy="#{paciente.endereco.cidade}">
+                <p:column headerText="Cidade"
+                          sortBy="#{paciente.endereco.cidade}">
                     <h:outputText value="#{paciente.endereco.cidade}"/>
                 </p:column>
                 <p:column width="40" style="text-align: center">
