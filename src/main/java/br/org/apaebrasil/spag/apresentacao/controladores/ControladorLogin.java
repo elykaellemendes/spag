@@ -49,6 +49,13 @@ public class ControladorLogin {
         return null;
     }
 
+    public String logout() {
+        FacesContext.getCurrentInstance()
+                .getExternalContext().invalidateSession();
+        
+        return "/inicio.xhtml?faces-redirect=true";
+    }
+    
     public String getUsuario() {
         return usuario;
     }

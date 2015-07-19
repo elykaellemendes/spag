@@ -54,13 +54,12 @@
                 <p:menuitem value="Sobre"
                             icon="fa-question-circle"
                             oncomplete="PF('sobreSpag').show();">
-
                 </p:menuitem>
             </p:submenu>
 
             <p:menuitem value="Sair"
                         icon="fa fa-power-off"
-                        action="#{controleLogin.sair()}"
+                        action="#{controleLogin.logout()}"
                         outcome="/index"/>
         </p:menubar>
         <p:dialog widgetVar="sobreSpag" header="Sobre" height="300px" width="500">
