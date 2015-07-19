@@ -21,8 +21,7 @@
         <h1>Lista de Profissionais</h1>
 
         <h:form id="frm">
-            <p:messages showDetail="true"
-                        showSummary="true"
+            <p:messages showSummary="true"
                         autoUpdate="true" />
 
             <p:dataTable id="tabela"
@@ -34,7 +33,9 @@
                          paginatorPosition="bottom">
                 <p:column headerText="Nome"
                           sortBy="#{profissional.nome}">
-                    <p:commandLink actionListener="#{controladorProfissionais.detalhe(profissional)}">
+                    <p:commandLink actionListener="#{controladorProfissionais.detalhe(profissional)}"
+                                   update=":frm:panel1,:frm:panel2"
+                                   oncomplete="PF('profissionalDialog').show();">
                         <h:outputText value="#{profissional.nome}"/>
                     </p:commandLink>
                 </p:column>
@@ -60,6 +61,32 @@
                     </h:panelGroup>
                 </p:column>
             </p:dataTable>
+            <p:dialog widgetVar="profissionalDialog" header="Profissional">
+                <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
+                    <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
+                        <p:outputLabel for="nome" value="Nome:"/>
+                        <h:outputText id="nome" value="#{controladorProfissionais.profissional.nome}"/>
+
+                        <p:outputLabel for="cpf" value="CPF:"/>
+                        <h:outputText id="cpf" value="#{controladorProfissionais.profissional.cpf}"/>
+                    </h:panelGrid>
+                </p:panel>
+                <p:panel id="panel2" header="Dados profissionais" style="margin-bottom:10px;">
+                    <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
+                        <p:outputLabel for="registroMedico" value="Registro Médico:"/>
+                        <h:outputText id="registroMedico" value="#{controladorProfissionais.profissional.registroMedico}"/>
+
+                        <p:outputLabel for="especializacao" value="Especialização:"/>
+                        <h:outputText id="especializacao" value="#{controladorProfissionais.profissional.especializacao}"/>
+                    </h:panelGrid>
+                </p:panel>
+                <p:panel id="panel3" header="Dados de usuário" style="margin-bottom:10px;">
+                    <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
+                        <p:outputLabel for="login" value="Login:"/>
+                        <h:outputText id="login" value="#{controladorProfissionais.profissional.usuario.login}"/>
+                    </h:panelGrid>
+                </p:panel>
+            </p:dialog>
         </h:form>
     </h:body>
 </html>

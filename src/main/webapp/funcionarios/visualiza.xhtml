@@ -20,13 +20,15 @@
 
         <h1>Lista de Funcionários</h1>
 
-        <h:form id="Vzf">
-            <p:messages showDetail="true" showSummary="true" autoUpdate="true" />
+        <h:form id="frm">
+            <p:messages showSummary="true" autoUpdate="true" />
 
             <p:dataTable id="tabela" value="#{controladorFuncionarios.todosFuncionarios}" var="funcionario" 
                          rowKey="#{funcionario.codigo}" paginator="true" rows="10" paginatorPosition="bottom">
                 <p:column headerText="Nome" sortBy="#{funcionario.nome}">
-                    <p:commandLink actionListener="#{controladorFuncionarios.detalhe(funcionario)}">
+                    <p:commandLink actionListener="#{controladorFuncionarios.detalhe(funcionario)}"
+                                   update=":frm:panel1,:frm:panel2"
+                                   oncomplete="PF('funcionarioDialog').show();">
                         <h:outputText value="#{funcionario.nome}"/>
                     </p:commandLink>
                 </p:column>
@@ -42,6 +44,22 @@
                     </h:panelGroup>
                 </p:column>
             </p:dataTable>
+            <p:dialog widgetVar="funcionarioDialog" header="Funcionario">
+                <p:panel id="panel1" header="Dados Pessoais" style="margin-bottom:10px;">
+                    <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
+                        <p:outputLabel for="nome" value="Nome:"/>
+                        <h:outputText id="nome" value="#{controladorFuncionarios.funcionario.nome}"/>
+
+                        <p:outputLabel for="cpf" value="CPF:"/>
+                        <h:outputText id="cpf" value="#{controladorFuncionarios.funcionario.cpf}"/>
+                </p:panel>
+                <p:panel id="panel2" header="Usuário" style="margin-bottom:10px;">
+                    <h:panelGrid columns="2" cellpadding="5" style="text-align: right; display:inline-block">
+                        <p:outputLabel for="login" value="Login:"/>
+                        <h:outputText id="login" value="#{controladorFuncionarios.funcionario.usuario.login}"/>
+                    </h:panelGrid>
+                </p:panel>
+            </p:dialog>
         </h:form>
     </h:body>
 </html>
