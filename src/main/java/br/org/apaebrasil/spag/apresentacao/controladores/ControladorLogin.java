@@ -36,7 +36,6 @@ public class ControladorLogin {
         profissional = profissionais.porUsuario(new Usuario(usuario, senha));
 
         if (profissional != null) {
-            System.out.println("ControladorLogin: ACHEI " + profissional.getNome());
             profile.setProfissional(profissional);
             
             return "/inicio.xhtml?faces-redirect=true";
