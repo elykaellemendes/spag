@@ -24,6 +24,8 @@ import javax.persistence.TemporalType;
 @Entity
 public class Agendamento implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue
     private int codigo;
