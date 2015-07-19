@@ -59,7 +59,7 @@
                     <p:panelGrid columns="2" styleClass="ui-noborder">
                         <p:outputLabel for="dataHora" value="Data e Hora: " />
                         <h:outputText id="dataHora" value="#{consulta.dataHora}">
-                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-3"/>
                         </h:outputText>
 
                         <p:outputLabel for="profissional" value="Profissional: " />
