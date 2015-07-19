@@ -65,7 +65,7 @@ public class ControladorProfissionais implements Serializable {
         return Especializacao.values();
     }
 
-    public void detalhe(Profissional profissional) {
-        RequestContext.getCurrentInstance().openDialog("detalhe");
+     public void detalhe(Profissional profissional) {
+        this.profissional = profissional;
     }
 }
