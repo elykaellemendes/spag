@@ -39,17 +39,15 @@ public class ControladorConsultas implements Serializable {
     private Pacientes pacientes;
 
     @Inject
-    private Profissionais profissionais;
+    private Profile profile;
 
-    private Consulta consulta;
-
-    // Este profissional deve estar na sessão!
     private Profissional profissional;
+    private Consulta consulta;
 
     public void novo() {
         consulta = new Consulta();
         consulta.setPaciente(new Paciente());
-        profissional = profissionais.recuperar(1);
+        profissional = profile.getProfissional();
     }
 
     public void adicionar() {

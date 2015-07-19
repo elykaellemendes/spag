@@ -5,6 +5,7 @@
  */
 package br.org.apaebrasil.spag.infraestrutura.autorizacao;
 
+import br.org.apaebrasil.spag.apresentacao.controladores.Profile;
 import br.org.apaebrasil.spag.dominio.Profissional;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -26,18 +27,14 @@ import javax.servlet.http.HttpServletResponse;
 public class AutorizacaoFilter implements Filter {
 
     @Inject
-    private Profissional profissional;
-
+    private Profile profile;
+    
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp,
             FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
-
-        profissional = new Profissional();
-        profissional.setNome("Pedro");
-        
-        if (profissional.getNome() == null && !request.getRequestURI().endsWith("/index.xhtml")
+        if (!profile.estaLogado() && !request.getRequestURI().endsWith("/index.xhtml")
                 && !request.getRequestURI().contains("/javax.faces.resource/")) {
             response.sendRedirect(request.getContextPath() + "/index.xhtml");
         } else {

@@ -8,6 +8,7 @@ package br.org.apaebrasil.spag.apresentacao.controladores;
 import br.org.apaebrasil.spag.dominio.Profissional;
 import br.org.apaebrasil.spag.dominio.Usuario;
 import br.org.apaebrasil.spag.dominio.repositorio.Profissionais;
+import java.util.Date;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -21,28 +22,32 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class ControladorLogin {
-    @Inject
-    private Profissional profissional;
-    
+
     @Inject
     private Profissionais profissionais;
+
+    @Inject
+    private Profile profile;
     
+    private Profissional profissional;
     private String usuario;
     private String senha;
-    
-    public String login() {
-        FacesContext context = FacesContext.getCurrentInstance();
 
-        if ("admin".equals(this.usuario) && "123".equals(senha)) {
-            //profissional = profissionais.porUsuario(new Usuario(usuario, senha));
+    public String login() {
+        profissional = profissionais.porUsuario(new Usuario(usuario, senha));
+
+        if (profissional != null) {
+            System.out.println("ControladorLogin: ACHEI " + profissional.getNome());
+            profile.setProfissional(profissional);
             
             return "/inicio.xhtml?faces-redirect=true";
         } else {
+            FacesContext context = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage("Usuário/Senha inválidos!");
             mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
             context.addMessage(null, mensagem);
         }
-        
+
         return null;
     }
 
