@@ -44,12 +44,19 @@
                                  required="true"
                                  requiredMessage="Campo obrigatório"
                                  size="50"/>
-                    <p:outputLabel for="senha" value="Senha:"/>
-                    <p:inputText id="senha"
-                                 value="#{controladorFuncionarios.funcionario.usuario.senha}"
-                                 required="true"
-                                 requiredMessage="Campo obrigatório"
-                                 size="50"/>
+                    <p:outputLabel for="senha1" value="Senha:"/>
+                    <p:password id="senha1"
+                                match="senha2"
+                                value="#{controladorFuncionarios.funcionario.usuario.senha}"
+                                required="true"
+                                requiredMessage="É obrigatório informar uma senha"
+                                size="50"/>
+                    <p:outputLabel for="senha2" value="Repita a senha:"/>
+                    <p:password id="senha2"
+                                value="#{controladorFuncionarios.funcionario.usuario.senha}"
+                                required="true"
+                                requiredMessage="É obrigatório informar uma senha"
+                                size="50"/>
                 </p:panelGrid>
             </p:panel>
             <p:commandButton value="Salvar"
