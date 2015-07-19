@@ -61,6 +61,6 @@ public class Usuario implements Serializable {
     }
 
     public void setSenha(String senha) {
-        this.senha = senha;
+        this.senha = criptografar(senha);
     }
 }
