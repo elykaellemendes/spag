@@ -60,7 +60,7 @@ public class ControladorFuncionarios implements Serializable {
     public List<Funcionario> getTodosFuncionarios() {
         return todosFuncionarios;
     }
-    public void detalhe(Funcionario funcionario) {
-        RequestContext.getCurrentInstance().openDialog("detalhe");
+     public void detalhe(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 }
