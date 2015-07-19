@@ -8,7 +8,6 @@ package br.org.apaebrasil.spag.apresentacao.controladores;
 import br.org.apaebrasil.spag.dominio.Profissional;
 import br.org.apaebrasil.spag.dominio.Usuario;
 import br.org.apaebrasil.spag.dominio.repositorio.Profissionais;
-import java.util.Date;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
