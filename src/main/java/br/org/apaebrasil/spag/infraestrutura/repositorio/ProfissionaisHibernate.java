@@ -52,10 +52,9 @@ public class ProfissionaisHibernate extends RepositorioHibernate<Profissional, I
     public Profissional porUsuario(Usuario usuario) {
         Objects.requireNonNull(usuario, "usuário inválido");
 
-        Query query = manager.createQuery("FROM Profissional p WHERE p.login = :login AND p.senha = :senha");
-        query.setParameter("login", usuario.getLogin());
-        query.setParameter("senha", usuario.getSenha());
-
-        return (Profissional) query.getSingleResult();
+        return manager.createQuery("FROM Profissional p WHERE p.usuario.login = :login AND p.usuario.senha = :senha", Profissional.class)
+                .setParameter("login", usuario.getLogin())
+                .setParameter("senha", usuario.getSenha())
+                .getSingleResult();
     }
 }
