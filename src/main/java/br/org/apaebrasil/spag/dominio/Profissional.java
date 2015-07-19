@@ -6,8 +6,6 @@
 package br.org.apaebrasil.spag.dominio;
 
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,8 +17,6 @@ import javax.persistence.Id;
  *
  * @author Pc
  */
-@Named
-@SessionScoped
 @Entity
 public class Profissional implements Serializable {
     private static final long serialVersionUID = 1L;
