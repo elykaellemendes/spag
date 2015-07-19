@@ -38,6 +38,7 @@ public class Profissional implements Serializable {
     private Especializacao especializacao;
 
     public Profissional() {
+        usuario = new Usuario();
     }
 
     public Profissional(String nome, String cpf, String registroMedico, Usuario usuario,Especializacao especializacao) {
