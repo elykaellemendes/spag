@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1"
-             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="SPAGPU">
@@ -8,8 +7,8 @@
         <class>br.org.apaebrasil.spag.dominio.Agendamento</class>
         <class>br.org.apaebrasil.spag.dominio.Consulta</class>
         <class>br.org.apaebrasil.spag.dominio.Paciente</class>
+        <class>br.org.apaebrasil.spag.dominio.Funcionario</class>
         <class>br.org.apaebrasil.spag.dominio.Profissional</class>
-        <class>br.org.apaebrasil.spag.dominio.Usuario</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/spag?autoReconnect=true&amp;characterEncoding=UTF-8&amp;useUnicode=true&amp;createDatabaseIfNotExist=true"/>
